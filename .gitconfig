@@ -1,0 +1,9 @@
+[user]
+	name = Evan Pavlica
+	email = evan@xicreative.net
+[credential]
+	helper = cache
+[color]
+	ui = true
+[push]
+	default = simple
