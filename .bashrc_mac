@@ -4,6 +4,8 @@
 ############################################
 
 
+### REQUIRES BASH v. 4+ ###
+
 # Add Android Platform-Tools to PATH
 export PATH=$PATH:/Users/epavlica/android-adt/sdk/platform-tools
 
@@ -47,7 +49,8 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 # Colors in the CLI
-export PS1="$FWHT<$FMAG\u$FWHT@$FCYN\w$FWHT> $(__git_ps1 '(%s)') $RS\\$ "
+export PS1="$FWHT<$FMAG\u$FWHT@$FCYN\w$FWHT> \$(__git_ps1 '(%s)') $RS\\$ "
+
 export CLICOLOR=1
 
 
