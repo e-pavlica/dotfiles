@@ -16,6 +16,9 @@ set softtabstop=2
 " add the dayle rees themes package
 colorscheme peacock 
 
+" gvim settings
+set guioptions-=T
+
 " disable arrow keys
 map <right> <nop>
 map <left> <nop>
