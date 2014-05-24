@@ -49,23 +49,32 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# alias for the python simple HTTP server
+alias simpleserve='python -m SimpleHTTPServer'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+#use passenger instead of rails server
+alias passenger="bundle exec passenger start -p 3000"
+
+# Rails aliases
+alias bi='bundle install'
+alias dbm='rake db:migrate'
 
 ### 
-#  Uncomment below for Ubuntu
+#  For Ubuntu
 ###
 
 # update the package manager #
-# alias update='sudo apt-get update'
-# alias dist-up='sudo apt-get dist-upgrade'
+alias update='sudo apt-get update'
+alias dist-up='sudo apt-get dist-upgrade'
 
 # install stuff #
-# alias install='sudo apt-get install'
+alias install='sudo apt-get install'
 
 # run pocket #
-# alias pocket='java -jar /opt/pocket'
+alias pocket='java -jar /opt/pocket'
+
 
