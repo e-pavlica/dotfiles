@@ -10,8 +10,10 @@
 export PATH=$PATH:/Users/epavlica/android-adt/sdk/platform-tools
 
 
-#add the git branch script for branch display in the terminal
+# add the git branch script for branch display in the terminal
 source ~/.git-prompt.sh
+# add git tab completion
+source ~/.git-completion.bash
 
 # provide the correct gcc to rbenv and add it to PATH
 export CC=/usr/bin/gcc-4.2export PATH="$HOME/.rbenv/bin:$PATH"
