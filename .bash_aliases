@@ -61,6 +61,7 @@ alias passenger="bundle exec passenger start -p 3000"
 
 # Rails aliases
 alias bi='bundle install'
+alias be='bundle exec'
 alias dbm='rake db:migrate'
 
 ### 
