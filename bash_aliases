@@ -75,7 +75,5 @@ alias dist-up='sudo apt-get dist-upgrade'
 # install stuff #
 alias install='sudo apt-get install'
 
-# run pocket #
-alias pocket='java -jar /opt/pocket'
 
 
