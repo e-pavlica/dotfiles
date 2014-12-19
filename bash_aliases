@@ -7,6 +7,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Set tmux to always run in 256 color mode
+alias tmux='tmux -2'
 
 # aliases for git commands #
 

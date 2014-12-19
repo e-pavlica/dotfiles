@@ -70,9 +70,12 @@ set expandtab
 
 " Color scheme
 set t_Co=256
-colorscheme pencil
-let g:airline_theme = 'pencil'
+colorscheme monokai
 set background=dark
+
+" Airline Customization
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'dark'
 
 " Make it obvious where 80 characters is
 set textwidth=80
