@@ -5,6 +5,7 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+export XDG_CONFIG_HOME=~/.config/
 
 # If not running interactively, don't do anything
 case $- in
@@ -113,8 +114,22 @@ fi
 #fi
 
 #add the ~/.bin to PATH if it exists
-if [ -f ~/.bin ]; then
+if [ -d ~/.bin ]; then
     export PATH="~/.bin:$PATH"
+fi
+
+if [ -d ~/.local/bin ]; then
+  export PATH="~/.local/bin:$PATH"
+fi
+
+# Powerline
+if type powerline-daemon &>/dev/null; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+
+  # POWERLINE_CONFIG_COMMAND="$(type -P powerline-config)"
+  . ~/code/source/powerline/powerline/bindings/bash/powerline.sh
 fi
 
 #add android platform-tools to path

@@ -75,7 +75,8 @@ set background=dark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'dark'
+let g:airline_theme = 'simple'
+let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
 set textwidth=80
