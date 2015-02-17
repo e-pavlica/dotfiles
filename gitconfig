@@ -14,6 +14,7 @@
 [diff]
   renames = true
   confictstyle = patience
+	tool = vimdiff
 [core]
   editor = vim
 [apply]
