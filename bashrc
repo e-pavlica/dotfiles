@@ -123,14 +123,14 @@ if [ -d ~/.local/bin ]; then
 fi
 
 # Powerline
-if type powerline-daemon &>/dev/null; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-
-  # POWERLINE_CONFIG_COMMAND="$(type -P powerline-config)"
-  . ~/code/source/powerline/powerline/bindings/bash/powerline.sh
-fi
+# if type powerline-daemon &>/dev/null; then
+#   powerline-daemon -q
+#   POWERLINE_BASH_CONTINUATION=1
+#   POWERLINE_BASH_SELECT=1
+#
+#   # POWERLINE_CONFIG_COMMAND="$(type -P powerline-config)"
+#   . ~/code/source/powerline/powerline/bindings/bash/powerline.sh
+# fi
 
 #add android platform-tools to path
 # export PATH="/opt/android-studio/sdk/tools:/opt/android-studio/sdk/platform-tools:$PATH"

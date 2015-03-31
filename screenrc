@@ -1,0 +1,22 @@
+# GNU Screen Configuration
+
+startup_message off
+# altscreen on
+encoding UTF-8
+
+# Terminal configuration
+# term xterm-256color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
+defbce on
+
+# Bottom Status Bar Config
+hardstatus off
+hardstatus alwayslastline
+hardstatus string "%{+b wk} %-w%{+b wk} %n %t %{-}%+w %41=%H @ %1 %-= %= %D,%c:%s "
+
+# Keep more lines in scrollback.
+defscrollback 1000
+compacthist on
+
