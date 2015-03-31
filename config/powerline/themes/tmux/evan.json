@@ -4,7 +4,7 @@
       {
         "function": "powerline.segments.common.wthr.weather",
         "args": {
-          "location_query": "los angeles, california",
+          "location_query": " Los Angeles, CA, USA",
           "unit": "F"
         }
       },

@@ -71,6 +71,7 @@ set expandtab
 " Color scheme
 set t_Co=256
 colorscheme monokai
+" let g:solarized_termcolors=256
 set background=dark
 
 " Airline Customization

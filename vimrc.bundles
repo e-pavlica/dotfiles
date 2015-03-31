@@ -35,12 +35,13 @@ Plugin 'itchyny/landscape.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'sickill/vim-monokai'
-Plugin 'adlawson/vim-sorcerer'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'ChrisKempson/Vim-Tomorrow-Theme'
+Plugin 'mattn/emmet-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

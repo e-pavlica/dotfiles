@@ -137,6 +137,10 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add Homebrew to the PATH
+export PATH="/usr/local/bin:$PATH"
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
