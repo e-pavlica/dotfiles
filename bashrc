@@ -194,3 +194,6 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# Local overrides
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

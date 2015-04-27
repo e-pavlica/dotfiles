@@ -1,7 +1,7 @@
 # GNU Screen Configuration
 
 startup_message off
-# altscreen on
+altscreen on
 encoding UTF-8
 
 # Terminal configuration
