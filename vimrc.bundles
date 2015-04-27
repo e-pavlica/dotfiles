@@ -41,7 +41,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ChrisKempson/Vim-Tomorrow-Theme'
-Plugin 'mattn/emmet-vim'
+Plugin 'wavded/vim-stylus'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
