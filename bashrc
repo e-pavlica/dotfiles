@@ -68,7 +68,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[35m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
-     PS1=$'\[\033[1;33m\]\u2606 \[\033[1;35m\]\u \[\033[1;34m\]\w\[\033[0;32m\]$(__git_ps1 " \u2446 %s")\[\033[00m\]\n\$ '
+     PS1=$'\[\033[1;33m\]\u2606 \[\033[1;35m\]\u \[\033[1;34m\]\w\[\033[0;32m\]$(__git_ps1 " \ue0a0 %s")\[\033[00m\]\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
