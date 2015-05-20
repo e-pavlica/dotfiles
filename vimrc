@@ -70,13 +70,14 @@ set expandtab
 
 " Color scheme
 set t_Co=256
-colorscheme monokai
+colorscheme Tomorrow-Night-Eighties
+set t_ut=
 " let g:solarized_termcolors=256
-set background=dark
+" set background=dark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'simple'
+let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -86,6 +87,10 @@ set colorcolumn=+1
 " Numbers
 set number
 set numberwidth=5
+
+" Disable syntax highlighting after the first 120 columns
+" (speeds up vim when super long lines are present)
+set synmaxcol=120
 
 " Tab completion
 " will insert tab at beginning of line,
