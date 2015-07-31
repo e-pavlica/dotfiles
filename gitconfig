@@ -20,6 +20,6 @@
 [apply]
   whitespace = nowarn
 [format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+  pretty = %Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %s
 [alias]
   gr = log --graph --date-order -C -M --pretty=format:\"%Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %Cgreen%d%Creset %s\" --all --date=short

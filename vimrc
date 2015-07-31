@@ -29,6 +29,12 @@ endif
 
 filetype plugin indent on
 
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
 augroup vimrcEx
   autocmd!
 
@@ -59,18 +65,16 @@ augroup vimrcEx
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
-augroup END
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
+  " Set JS to indent at 4 spaces
+  autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
+
+augroup END
 
 
 " Color scheme
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties
+colorscheme wolfpack
 set t_ut=
 " let g:solarized_termcolors=256
 " set background=dark
@@ -166,3 +170,15 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif

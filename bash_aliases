@@ -59,14 +59,15 @@ alias simpleserve='python -m SimpleHTTPServer'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 #use passenger instead of rails server
-alias passenger="bundle exec passenger start -p 3000"
+alias passenger="bundle exec passenger start -p 3000 -a 0.0.0.0"
 
-# Rails aliases
+# Ruby aliases
 alias bi='bundle install'
 alias be='bundle exec'
 alias dbm='rake db:migrate'
+alias rsv='bundle exec rails s -b 0.0.0.0 -p 3000'
 
-### 
+###
 #  For Ubuntu
 ###
 
