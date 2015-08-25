@@ -1,7 +1,7 @@
 # # GNU Screen Configuration
 #
 # startup_message off
-# encoding UTF-8
+encoding UTF-8
 #
 # # Terminal configuration
 # # term xterm-256color
@@ -37,11 +37,12 @@ defbce on
 altscreen on
 
 # default windows
-screen -t Shell1  1 bash
-screen -t Shell2  2 bash
+screen 1 bash
+screen -t irssi  2 irssi
 select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10
+select 1
 
 # navigating regions with Ctrl-arrows
 bindkey "^[[1;5D" focus left

@@ -74,14 +74,12 @@ augroup END
 
 " Color scheme
 set t_Co=256
-colorscheme wolfpack
-set t_ut=
-" let g:solarized_termcolors=256
-" set background=dark
+set background=dark
+colorscheme PaperColor
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'PaperColor'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
