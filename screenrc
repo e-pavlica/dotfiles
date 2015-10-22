@@ -4,7 +4,7 @@
 encoding UTF-8
 #
 # # Terminal configuration
-# # term xterm-256color
+term xterm-256color
 # attrcolor b ".I"
 # termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # # termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
@@ -21,7 +21,7 @@ encoding UTF-8
 # From https://gist.github.com/joaopizani/2718397
 # the following two lines give a two-line status, with the current window highlighted
 hardstatus alwayslastline
-hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
+hardstatus string '%{= kb}[%{+b B}%H%? %1`%?%{-b b}][%= %{= kw}%-w%{+b gK} %n*%t%?(%u)%? %{-}%+w %=%{b}][%{m}%m/%d %{W}%C%A%{b}]'
 
 # huge scrollback buffer
 defscrollback 5000
@@ -38,11 +38,11 @@ altscreen on
 
 # default windows
 screen 1 bash
-screen -t irssi  2 irssi
+# screen -t irssi  2 irssi
 select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10
-select 1
+# select 1
 
 # navigating regions with Ctrl-arrows
 bindkey "^[[1;5D" focus left

@@ -197,3 +197,6 @@ fi
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
+export NVM_DIR="/Users/epavlica/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
