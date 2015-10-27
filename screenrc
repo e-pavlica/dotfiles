@@ -21,7 +21,7 @@ term xterm-256color
 # From https://gist.github.com/joaopizani/2718397
 # the following two lines give a two-line status, with the current window highlighted
 hardstatus alwayslastline
-hardstatus string '%{= kb}[%{+b B}%H%? %1`%?%{-b b}][%= %{= kw}%-w%{+b gK} %n*%t%?(%u)%? %{-}%+w %=%{b}][%{m}%m/%d %{W}%C%A%{b}]'
+hardstatus string '%{= Kb}<%{W}%H %{m}%S%? %1`%?%{-b b}><%= %{= kw}%-w%{+b gK} %n*%t%?(%u)%? %{-}%+w %=%{b}><%{m}%m/%d %{W}%C%A%{b}>'
 
 # huge scrollback buffer
 defscrollback 5000
