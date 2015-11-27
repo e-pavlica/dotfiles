@@ -3,7 +3,7 @@
 ###############################################################
 
 # ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -79,4 +79,6 @@ alias dist-up='sudo apt-get dist-upgrade'
 alias install='sudo apt-get install'
 
 
+# Exit bash
+alias ex='exit'
 
