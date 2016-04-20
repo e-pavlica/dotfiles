@@ -1,25 +1,35 @@
 [user]
-	name = Evan Pavlica
-	email = evan@xicreative.net
+name = Evan Pavlica
+email = evan@xicreative.net
+
 [credential]
-	helper = cache
+helper = cache
+
 [color]
-	ui = true
+ui = true
+
 [push]
-	default = upstream
+default = upstream
+
 [merge]
-  ff = only
+ff = only
+
 [rebase]
-  autosquash = true
+autosquash = true
+
 [diff]
-  renames = true
-  confictstyle = patience
-	tool = vimdiff
+renames = true
+confictstyle = patience
+tool = vimdiff
+
 [core]
-  editor = vim
+editor = vim
+
 [apply]
-  whitespace = nowarn
+whitespace = nowarn
+
 [format]
-  pretty = %Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %s
+pretty = %Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %s
+
 [alias]
-  gr = log --graph --date-order -C -M --pretty=format:\"%Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %Cgreen%d%Creset %s\" --all --date=short
+gr = log --graph --date-order -C -M --pretty=format:\"%Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %Cgreen%d%Creset %s\" --all --date=short
