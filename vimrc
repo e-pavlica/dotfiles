@@ -73,13 +73,13 @@ augroup END
 
 
 " Color scheme
-set t_Co=256
+" set t_Co=256
 set background=dark
-colorscheme PaperColor
+colorscheme kolor
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'papercolor'
+let g:airline_theme = 'kolor'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -149,7 +149,8 @@ nnoremap <C-l> <C-w>l
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['jshint']
+let g:syntastic_html_checkers = ['jshint', 'csslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -182,3 +183,6 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" Add Syntax Highlighting for jbuilder
+au BufNewFile,BufRead *.json.jbuilder set ft=ruby

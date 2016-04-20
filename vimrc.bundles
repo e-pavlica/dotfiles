@@ -10,14 +10,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Define bundles via Github repos
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-run-interactive'
-Plugin 'croaky/vim-colors-github'
 Plugin 'kien/ctrlp.vim'
 Plugin 'pbrisbin/vim-mkdir'
 Plugin 'scrooloose/syntastic'
-Plugin 'slim-template/vim-slim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
@@ -26,20 +24,24 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-obsession'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/tComment'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Yggdroot/indentLine'
-Plugin 'bendavis78/vim-polymer'
 Plugin 'tpope/vim-afterimage'
-Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'rust-lang/rust.vim'
+Plugin 'pangloss/vim-javascript'
+
+" Colorschemes
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'jnurmine/Zenburn'
+Plugin 'croaky/vim-colors-github'
+Plugin 'zeis/vim-kolor'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
