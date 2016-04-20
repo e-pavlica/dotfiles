@@ -9,8 +9,8 @@ export XDG_CONFIG_HOME=~/.config/
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+  *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,12 +37,12 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+  xterm-color) color_prompt=yes;;
 esac
 
 #add the git branch script for branch display in the terminal
@@ -56,41 +56,52 @@ source ~/.git-completion.bash
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-#    PS1='${debian_chroot:+($debian_chroot)}\[\033[35m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
-     PS1=$'\[\033[1;33m\]\u2606 \[\033[1;35m\]\u \[\033[1;34m\]\w\[\033[0;32m\]$(__git_ps1 " \ue0a0 %s")\[\033[00m\]\n\$ '
+  GIT_PS1_SHOWCOLORHINTS=true
+  GIT_PS1_SHOWDIRTYSTATE=true
+
+  # Colors!
+  BLACK="\[\033[00m\]"
+  BLUE="\[\033[0;34m\]"
+  GREEN="\[\033[0;32m\]"
+  PURPLE="\[\033[0;35m\]"
+  YELLOW="\[\033[1;33m\]"
+
+  # BASH PS1 escapes
+  USER="\u"
+  SHORT_PATH="\w"
+  NEW_LINE="\n"
+  PROMPT_COMMAND='__git_ps1 \
+    "$PURPLE┌[$BLUE✨$YELLOW $USER$PURPLE][$BLACK$SHORT_PATH$PURPLE]$BLACK" \
+    "$NEW_LINE$PURPLE└─$BLACK "'
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+  xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
+  *)
     ;;
 esac
 
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # BASH Completion for aliases (code from SO)
@@ -109,13 +120,13 @@ fi
 
 # add rbenv to PATH when possible
 #if [ -f ~/.rbenv/ ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 #fi
 
 #add the ~/.bin to PATH if it exists
 if [ -d ~/.bin ]; then
-    export PATH="~/.bin:$PATH"
+  export PATH="~/.bin:$PATH"
 fi
 
 if [ -d ~/.local/bin ]; then
@@ -157,10 +168,10 @@ if type complete &>/dev/null; then
   _npm_completion () {
     local si="$IFS"
     IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${COMP_WORDS[@]}" \
-                           2>/dev/null)) || return $?
+      COMP_LINE="$COMP_LINE" \
+      COMP_POINT="$COMP_POINT" \
+      npm completion -- "${COMP_WORDS[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
   }
   complete -F _npm_completion npm
@@ -168,10 +179,10 @@ elif type compdef &>/dev/null; then
   _npm_completion() {
     si=$IFS
     compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
+      COMP_LINE=$BUFFER \
+      COMP_POINT=0 \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)
     IFS=$si
   }
   compdef _npm_completion npm
@@ -185,10 +196,10 @@ elif type compctl &>/dev/null; then
     read -ln point
     si="$IFS"
     IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
+      COMP_LINE="$line" \
+      COMP_POINT="$point" \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
   }
   compctl -K _npm_completion npm
