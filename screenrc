@@ -1,15 +1,22 @@
 # # GNU Screen Configuration
-#
-# startup_message off
 encoding UTF-8
-#
-# # Terminal configuration
-term xterm-256color
 
-# From https://gist.github.com/joaopizani/2718397
-# the following two lines give a two-line status, with the current window highlighted
+# Terminal configuration
+term screen-256color
+
 hardstatus alwayslastline
-hardstatus string '%{= db}<%{W}%H %{m}%S%? %1`%?%{-b b}><%= %{= dw}%-w%{+b gK} %n*%t%?(%u)%? %{-}%+w %=%{b}><%{m}%m/%d %{W}%C%A%{b}>'
+# Bottom Status Line. Should appear as:
+# [1 screen] 2 screen ... 💻hostname 📌 session 🔋 xx% ⏰  HH:mm  📆 M.D.YYYY
+hardstatus string '%{= dw}%-w%{+b gW} %n %t %{-}%+w %=%{W} %4` %{Y}%H %{W}%5` %{m}%S %{W}%1` %{c}%6`%% %{W}%2` %{r}%c %{W}%3` %{b}%m.%d.%Y'
+
+# echo emoticon characters into the statusline to prevent display weirdness
+backtick 1 9999999 9999999 echo 🔋
+backtick 2 9999999 9999999 echo ⏰
+backtick 3 9999999 9999999 echo 📆
+backtick 4 9999999 9999999 echo 💻
+backtick 5 9999999 9999999 echo 📌
+# Battery state as percentage
+backtick 6 60 60 cat /sys/class/power_supply/BAT0/capacity
 
 # huge scrollback buffer
 defscrollback 5000
@@ -44,4 +51,3 @@ bind -c rsz h eval "resize -h -5" "command -c rsz"
 bind -c rsz j eval "resize -v -5" "command -c rsz"
 bind -c rsz k eval "resize -v +5" "command -c rsz"
 bind -c rsz l eval "resize -h +5" "command -c rsz"
-
