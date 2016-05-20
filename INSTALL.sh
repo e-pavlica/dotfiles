@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-RUBY_VERISON=2.3.1
-
 # New system install script for Evan Pavlica
 
 SYSTEM_TYPE=`uname -s`
@@ -67,9 +65,20 @@ source ~/.bashrc
 echo '>>> Installing Vundle Packages...'
 vim +PluginInstall +qall
 
-read -p "Install Ruby version $RUBY_VERISON (y/n)?" choice
-case "$choice" in
-  y|Y ) rbenv install $RUBY_VERISON;;
-  n|N ) echo 'skipped';;
-  * ) echo 'skipped';;
-esac
+cat <<"EOT"
+
+>>> DONE.
+    You should now install Ruby (rbenv install x.x.x) and
+    install Node.js (nvm install x.x)
+
+    Live Long and Prosper.
+
+___________________          _-_             _      _-_      _
+\__(==========/_=_/ ____.---'---`---.____  _|_|.---'---`---.|_|_
+            \_ \    \----._________.----/  \----._________.----/
+              \ \   /  /    `-_-'              `.  `]-['  ,'
+          __,--`.`-'..'-_                        `.' _ `.'
+         /____          ||                        | (_) |
+              `--.____,-'                          `___'
+
+EOT
