@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -44,10 +40,6 @@ fi
 case "$TERM" in
   xterm-color) color_prompt=yes;;
 esac
-
-#add the git branch script for branch display in the terminal
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
 
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -98,6 +90,16 @@ case "$TERM" in
     ;;
 esac
 
+# Check if a specified program exists in PATH
+command_exists () {
+  command -v "$1" > /dev/null 2>&1
+}
+
+if command_exists git; then
+  # add the git branch script for branch display in the terminal
+  source ~/.git-prompt.sh
+  source ~/.git-completion.bash
+fi
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
@@ -119,12 +121,12 @@ if ! shopt -oq posix; then
 fi
 
 # add rbenv to PATH when possible
-#if [ -f ~/.rbenv/ ]; then
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-#fi
+if [ -d ~/.rbenv ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
-#add the ~/.bin to PATH if it exists
+# add the ~/.bin to PATH if it exists
 if [ -d ~/.bin ]; then
   export PATH="~/.bin:$PATH"
 fi
@@ -133,78 +135,21 @@ if [ -d ~/.local/bin ]; then
   export PATH="~/.local/bin:$PATH"
 fi
 
-# Powerline
-# if type powerline-daemon &>/dev/null; then
-#   powerline-daemon -q
-#   POWERLINE_BASH_CONTINUATION=1
-#   POWERLINE_BASH_SELECT=1
-#
-#   # POWERLINE_CONFIG_COMMAND="$(type -P powerline-config)"
-#   . ~/code/source/powerline/powerline/bindings/bash/powerline.sh
-# fi
-
-#add android platform-tools to path
-# export PATH="/opt/android-studio/sdk/tools:/opt/android-studio/sdk/platform-tools:$PATH"
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Add Homebrew to the PATH
 export PATH="/usr/local/bin:$PATH"
 
-###-begin-npm-completion-###
-#
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
-
-COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
-COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
-export COMP_WORDBREAKS
-
-if type complete &>/dev/null; then
-  _npm_completion () {
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-      COMP_LINE="$COMP_LINE" \
-      COMP_POINT="$COMP_POINT" \
-      npm completion -- "${COMP_WORDS[@]}" \
-      2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -F _npm_completion npm
-elif type compdef &>/dev/null; then
-  _npm_completion() {
-    si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-      COMP_LINE=$BUFFER \
-      COMP_POINT=0 \
-      npm completion -- "${words[@]}" \
-      2>/dev/null)
-    IFS=$si
-  }
-  compdef _npm_completion npm
-elif type compctl &>/dev/null; then
-  _npm_completion () {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-      COMP_LINE="$line" \
-      COMP_POINT="$point" \
-      npm completion -- "${words[@]}" \
-      2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K _npm_completion npm
+# NPM Command Completion
+if command_exists npm; then
+  source ~/.npm-completion.sh
 fi
-###-end-npm-completion-###
+
+# Base16 Shell
+export BASE16_SHELL="$HOME/.shell/base16/base16-atelierlakeside.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
