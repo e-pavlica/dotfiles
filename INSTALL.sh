@@ -57,7 +57,7 @@ fi
 
 
 echo '>>> Adding rc files...'
-rcup -x README.md INSTALL.sh
+rcup -x README.md -x INSTALL.sh
 
 echo '>>> Add ruby-build rbenv plugin...'
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
