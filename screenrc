@@ -5,16 +5,8 @@ encoding UTF-8
 term screen-256color
 
 hardstatus alwayslastline
-# Bottom Status Line. Should appear as:
-# [1 screen] 2 screen ... 💻hostname 📌 session 🔋 xx% ⏰  HH:mm  📆 M.D.YYYY
-hardstatus string '%{= dw}%-w%{+b gW} %n %t %{-}%+w %=%{W} %4` %{Y}%H %{W}%5` %{m}%S %{W}%1` %{c}%6`%% %{W}%2` %{r}%c %{W}%3` %{b}%m.%d.%Y'
+hardstatus string '%{= dw}%-w%{+b gW}[%n %t]%{-}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
 
-# echo emoticon characters into the statusline to prevent display weirdness
-backtick 1 9999999 9999999 echo 🔋
-backtick 2 9999999 9999999 echo ⏰
-backtick 3 9999999 9999999 echo 📆
-backtick 4 9999999 9999999 echo 💻
-backtick 5 9999999 9999999 echo 📌
 # Battery state as percentage
 backtick 6 60 60 cat /sys/class/power_supply/BAT0/capacity
 
@@ -37,17 +29,12 @@ select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10
 
-# navigating regions with Ctrl-arrows
-bindkey "^[[1;5D" focus left
-bindkey "^[[1;5C" focus right
-bindkey "^[[1;5A" focus up
-bindkey "^[[1;5B" focus down
+# navigating regions with Alt + arrows
+bindkey ^[^[[D focus left
+bindkey ^[^[[C focus right
+bindkey ^[^[[A focus up
+bindkey ^[^[[B focus down
 
 # F2 puts Screen into resize mode. Resize regions using hjkl keys.
 bindkey "^[OQ" eval "command -c rsz" # enter resize mode
 
-# use hjkl keys to resize regions
-bind -c rsz h eval "resize -h -5" "command -c rsz"
-bind -c rsz j eval "resize -v -5" "command -c rsz"
-bind -c rsz k eval "resize -v +5" "command -c rsz"
-bind -c rsz l eval "resize -h +5" "command -c rsz"

@@ -69,13 +69,19 @@ if [ "$color_prompt" = yes ]; then
   PURPLE="\[\033[0;35m\]"
   YELLOW="\[\033[1;33m\]"
 
+  # Symbols
+  TOP_LEFT=$'\xe2\x94\x8c'
+  BOTTOM_LEFT=$'\xe2\x94\x94'
+  HORIZONTAL_LINE=$'\xe2\x94\x80'
+  SPARKLE=$'\xe2\x9c\xa8'
+
   # BASH PS1 escapes
   USER="\u"
   SHORT_PATH="\w"
   NEW_LINE="\n"
   PROMPT_COMMAND='__git_ps1 \
-    "$PURPLE┌[$BLUE✨$YELLOW $USER$PURPLE][$BLACK$SHORT_PATH$PURPLE]$BLACK" \
-    "$NEW_LINE$PURPLE└─$BLACK "'
+    "$PURPLE$TOP_LEFT[$BLUE$SPARKLE$YELLOW $USER$PURPLE][$BLACK$SHORT_PATH$PURPLE]$BLACK" \
+    "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK "'
 else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

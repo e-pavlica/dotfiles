@@ -67,7 +67,7 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Set JS to indent at 4 spaces
-  autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
+  " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
 
 augroup END
 
@@ -76,11 +76,11 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-atelierlakeside
+colorscheme PaperColor
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16_atelierlakeside'
+let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -187,3 +187,7 @@ endif
 
 " Add Syntax Highlighting for jbuilder
 au BufNewFile,BufRead *.json.jbuilder set ft=ruby
+
+" Use Dispatch as the rspec command
+" let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+let g:rspec_command = "!bundle exec rspec {spec}"
