@@ -40,7 +40,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Ruby aliases
 alias bi='bundle install'
 alias be='bundle exec'
-alias rsv='spring rails s -b 0.0.0.0 -p 3000'
+alias ber='bundle exec rake'
 
 # Exit bash
 alias ex='exit'

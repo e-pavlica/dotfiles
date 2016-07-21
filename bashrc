@@ -126,6 +126,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Color-enabled man pages!
+man() {
+	env \
+		LESS_TERMCAP_mb=$'\e[01;31m' \
+		LESS_TERMCAP_md=$'\e[01;31m' \
+		LESS_TERMCAP_me=$'\e[0m' \
+		LESS_TERMCAP_se=$'\e[0m' \
+		LESS_TERMCAP_so=$'\e[01;44;33m' \
+		LESS_TERMCAP_ue=$'\e[0m' \
+		LESS_TERMCAP_us=$'\e[01;32m' \
+		man "$@"
+}
+
 # add rbenv to PATH when possible
 if [ -d ~/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -153,7 +166,7 @@ if command_exists npm; then
 fi
 
 # Base16 Shell
-export BASE16_SHELL="$HOME/.shell/base16/base16-atelierlakeside.dark.sh"
+export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-paraiso.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 

@@ -3,10 +3,12 @@
   # name = Evan Pavlica & Ron Dollete
   # name = Evan Pavlica & William Andrews
   name = Evan Pavlica
-  email = evan@xicreative.net
+  email = evan@pavlica.us
+	signingkey = F461D89F2EFA35F2
 
 [credential]
   helper = cache
+  helper = store --file ~/.git-credential-store
 
 [color]
   ui = true
@@ -43,3 +45,5 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[commit]
+	gpgsign = true

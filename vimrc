@@ -76,11 +76,11 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme PaperColor
+colorscheme base16-paraiso
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'papercolor'
+let g:airline_theme = 'base16_paraiso'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -188,6 +188,5 @@ endif
 " Add Syntax Highlighting for jbuilder
 au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
-" Use Dispatch as the rspec command
-" let g:rspec_command = "Dispatch bundle exec rspec {spec}"
-let g:rspec_command = "!bundle exec rspec {spec}"
+" let g:rspec_command = "!bundle exec rspec {spec}"
+let g:rspec_command = 'SlimeSend0("bundle exec rspec {spec}\n")'
