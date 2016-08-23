@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 " Define bundles via Github repos
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'pbrisbin/vim-mkdir'
 Plugin 'scrooloose/syntastic'
 Plugin 'thoughtbot/vim-rspec'
@@ -35,6 +35,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'rust-lang/rust.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jpalardy/vim-slime'
+Plugin 'ryanoasis/vim-devicons'
 
 " Colorschemes
 Plugin 'NLKNguyen/papercolor-theme'

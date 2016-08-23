@@ -76,11 +76,11 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-paraiso
+colorscheme base16-darktooth
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16_paraiso'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -117,7 +117,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>
+nnoremap <Leader><Leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -134,7 +134,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
+" let g:html_indent_tags = 'li\|p'
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow

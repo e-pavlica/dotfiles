@@ -5,7 +5,7 @@ encoding UTF-8
 term screen-256color
 
 hardstatus alwayslastline
-hardstatus string '%{= dW}%-w%{+b gW}[%n %t]%{-}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
+hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
 # caption splitonly "%?%F%{.w.}%?%{= M} %= %n %{= B}%t %="
 caption splitonly "%{= dd}%?%F%{.m.}%?%= %{= M}%?%F%{..G}%?%n %{= B}%?%F%{..W}%?%t %="
 rendition so "= dG"
