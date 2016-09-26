@@ -139,12 +139,6 @@ man() {
 		man "$@"
 }
 
-# add rbenv to PATH when possible
-if [ -d ~/.rbenv ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 # add the ~/.bin to PATH if it exists
 if [ -d ~/.bin ]; then
   export PATH="~/.bin:$PATH"
@@ -160,13 +154,19 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Add Homebrew to the PATH
 export PATH="/usr/local/bin:$PATH"
 
+# add rbenv to PATH when possible
+if [ -d ~/.rbenv ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 # NPM Command Completion
 if command_exists npm; then
   source ~/.npm-completion.sh
 fi
 
 # Base16 Shell
-export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-darktooth.sh"
+export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-materia.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 

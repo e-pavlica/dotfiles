@@ -76,7 +76,7 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-darktooth
+colorscheme base16-materia
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1

@@ -7,3 +7,4 @@ tag
 ehthumbs.db
 Thumbs.db
 evan.rake
+nginx.conf.erb
