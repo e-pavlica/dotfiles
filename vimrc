@@ -76,11 +76,11 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-materia
+colorscheme base16-onedark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16'
+let g:airline_theme = 'base16_default'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is

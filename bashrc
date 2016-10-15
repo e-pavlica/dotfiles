@@ -166,7 +166,7 @@ if command_exists npm; then
 fi
 
 # Base16 Shell
-export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-materia.sh"
+export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-onedark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 
