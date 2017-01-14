@@ -53,6 +53,7 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -76,11 +77,11 @@ augroup END
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-onedark
+colorscheme base16-unikitty-dark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16_default'
+let g:airline_theme = 'base16_pop'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
