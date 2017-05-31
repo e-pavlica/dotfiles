@@ -21,8 +21,16 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 
+command_exists () {
+  command -v "$1" > /dev/null 2>&1
+}
+
+if command_exists gdircolors; then
+  alias dircolors='gdircolors'
+fi
+
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if command_exists dircolors; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'

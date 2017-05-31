@@ -61,6 +61,7 @@ fi
 if [ "$color_prompt" = yes ]; then
   GIT_PS1_SHOWCOLORHINTS=true
   GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWUPSTREAM="auto"
 
   # Colors!
   BLACK="\[\033[00m\]"

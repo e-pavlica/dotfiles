@@ -1,6 +1,5 @@
 [user]
   # name = Evan Pavlica & Daniel Tea
-  # name = Evan Pavlica & Ron Dollete
   # name = Evan Pavlica & William Andrews
   name = Evan Pavlica
   email = evan@pavlica.us
@@ -17,7 +16,7 @@
   default = upstream
 
 [merge]
-  # ff = only
+  # ff = false
 
 [rebase]
   autosquash = true

@@ -46,10 +46,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
-  " Cucumber navigation commands
-  autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-  autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -81,7 +77,7 @@ colorscheme base16-unikitty-dark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16_pop'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -92,9 +88,9 @@ set colorcolumn=+1
 set number
 set numberwidth=5
 
-" Disable syntax highlighting after the first 120 columns
+" Disable syntax highlighting after the first 200 columns
 " (speeds up vim when super long lines are present)
-set synmaxcol=120
+" set synmaxcol=200
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -110,9 +106,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
-
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
@@ -133,9 +126,6 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
-
-" Treat <li> and <p> tags like the block tags they are
-" let g:html_indent_tags = 'li\|p'
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -186,8 +176,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" Add Syntax Highlighting for jbuilder
-au BufNewFile,BufRead *.json.jbuilder set ft=ruby
-
-" let g:rspec_command = "!bundle exec rspec {spec}"
+" Run rspec commands in a GNU Screen window
 let g:rspec_command = 'SlimeSend0("bundle exec rspec {spec}\n")'
+
+" Make easytags a little perform a bit better
+let g:easytags_async=1
+let g:easytags_auto_highlight=0
