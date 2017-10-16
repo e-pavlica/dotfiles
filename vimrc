@@ -77,6 +77,15 @@ colorscheme base16-unikitty-dark
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#right_sep     = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep      = ''
+let g:airline#extensions#tabline#left_alt_sep  = ''
+let g:airline_right_sep     = ''
+let g:airline_right_alt_sep = ''
+let g:airline_left_sep      = ''
+let g:airline_left_alt_sep  = ''
+
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
@@ -138,11 +147,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['jshint', 'csslint']
-let g:syntastic_ruby_checkers = ['rubocop']
+" let g:syntastic_check_on_open=1
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_html_checkers = ['jshint', 'csslint']
+" let g:syntastic_ruby_checkers = ['rubocop']
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -154,6 +163,11 @@ set diffopt+=vertical
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
+endif
+
+" Custom splash screen
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.greeting
 endif
 
 " Config EasyMotion
@@ -177,8 +191,21 @@ if executable('ag')
 endif
 
 " Run rspec commands in a GNU Screen window
-let g:rspec_command = 'SlimeSend0("bundle exec rspec {spec}\n")'
+let g:rspec_command = 'SlimeSend0("bundle exec rspec -f d {spec}\n")'
 
 " Make easytags a little perform a bit better
 let g:easytags_async=1
 let g:easytags_auto_highlight=0
+
+let g:ale_sign_warning = ''
+let g:ale_sign_error = ''
+let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
+
+" Convert Ruby 1.9 hash syntax to hashrocket style
+vmap <Leader>hr :s/\(\s\+\)\(\w\+\):/\1:\2 =>/<CR>
+" Convert Hashrocket syntax to Ruby 1.9 syntax
+vmap <Leader>!hr :s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+" Convert Single Quotes to Double Quotes
+vmap <Leader>' :s/"/'/g<CR>
+" Add Space inside curly braces
+vmap <Leader>{} :s/{\(\S\)\(.*\)\(\S\)}/{ \1\2\3 }/<CR>
