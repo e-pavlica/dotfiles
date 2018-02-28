@@ -71,9 +71,12 @@ augroup END
 
 " Color scheme
 set t_Co=256
-let base16colorspace=256
+" let base16colorspace=256
 set background=dark
-colorscheme base16-unikitty-dark
+colorscheme PaperColor
+" Unset backgrounds for transparency
+" hi Normal  guibg=NONE ctermbg=NONE
+" hi NonText guibg=NONE ctermbg=NONE
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
@@ -86,7 +89,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_left_sep      = ''
 let g:airline_left_alt_sep  = ''
 
-let g:airline_theme = 'base16'
+let g:airline_theme = 'dracula'
 let g:airline_powerline_fonts = 1
 
 " Make it obvious where 80 characters is
@@ -202,10 +205,20 @@ let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 
 " Convert Ruby 1.9 hash syntax to hashrocket style
-vmap <Leader>hr :s/\(\s\+\)\(\w\+\):/\1:\2 =>/<CR>
+vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):/\1:\2 =>/<CR>
 " Convert Hashrocket syntax to Ruby 1.9 syntax
-vmap <Leader>!hr :s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
+vnoremap <Leader>!hr :s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 " Convert Single Quotes to Double Quotes
-vmap <Leader>' :s/"/'/g<CR>
+vnoremap <Leader>' :s/"/'/g<CR>
 " Add Space inside curly braces
-vmap <Leader>{} :s/{\(\S\)\(.*\)\(\S\)}/{ \1\2\3 }/<CR>
+vnoremap <Leader>{} :s/{\(\S\)\(.*\)\(\S\)}/{ \1\2\3 }/<CR>
+" Add frozen_string_literal magic comment
+function! FrozenStringLiteralRB()
+  normal! m'
+  1
+  set paste
+  normal! O# frozen_string_literal: true
+  set nopaste
+  normal! ``
+endfunction
+nnoremap <Leader>fsl :call FrozenStringLiteralRB()<CR>
