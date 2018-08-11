@@ -13,21 +13,24 @@ env:
   # `infocmp xterm-256color`.
   TERM: xterm-256color
 
-# Window dimensions in character columns and lines
-# (changes require restart)
-dimensions:
-  columns: 80
-  lines: 24
+window:
+  # Window dimensions in character columns and lines
+  # (changes require restart)
+  dimensions:
+    columns: 180
+    lines: 48
 
-# Adds this many blank pixels of padding around the window
-# Units are physical pixels; this is not DPI aware.
-# (change requires restart)
-padding:
-  x: 2
-  y: 2
+  # Adds this many blank pixels of padding around the window
+  # Units are physical pixels; this is not DPI aware.
+  # (change requires restart)
+  padding:
+    x: 2
+    y: 2
+
+  decorations: true
 
 # Display tabs using this many cells (changes require restart)
-tabspaces: 8
+tabspaces: 4
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -54,7 +57,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 14.0
+  size: 8.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -281,7 +284,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.9
+background_opacity: 1
 
 # Mouse bindings
 #
@@ -308,6 +311,7 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
+dynamic_title: true
 hide_cursor_when_typing: false
 
 # Style of the cursor
@@ -364,18 +368,19 @@ live_config_reload: true
 #     strings. For example:
 #     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
 key_bindings:
-  - { key: V,        mods: Command, action: Paste                        }
-  - { key: C,        mods: Command, action: Copy                         }
-  - { key: Q,        mods: Command, action: Quit                         }
-  - { key: W,        mods: Command, action: Quit                         }
+  - { key: V,        mods: Control|Shift,    action: Paste               }
+  - { key: C,        mods: Control|Shift,    action: Copy                }
+  - { key: Q,        mods: Control, action: Quit                         }
+  # - { key: W,        mods: Control, action: Quit                         }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
-  - { key: Key0,     mods: Command, action: ResetFontSize                }
-  - { key: Equals,   mods: Command, action: IncreaseFontSize             }
-  - { key: Minus,    mods: Command, action: DecreaseFontSize             }
-  - { key: N,        mods: Command, command: { program: "open", args: ["-n", "/Users/epavlica/Applications/Alacritty.app"] } }
+  - { key: Insert,   mods: Shift,   action: PasteSelection               }
+  - { key: Key0,     mods: Control, action: ResetFontSize                }
+  - { key: Equals,   mods: Control, action: IncreaseFontSize             }
+  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
+  - { key: N,        mods: Control|Shift, command: { program: "alacritty" } }
   - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~"                   }
   - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }

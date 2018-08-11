@@ -149,9 +149,6 @@ if [ -d ~/.local/bin ]; then
   export PATH="~/.local/bin:$PATH"
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # Add Homebrew to the PATH
 export PATH="/usr/local/bin:$PATH"
 
@@ -167,9 +164,8 @@ if command_exists npm; then
 fi
 
 # Base16 Shell
-# export BASE16_SHELL="$HOME/.shell/base16/scripts/base16-unikitty-dark.sh"
-# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
+BASE16_SHELL=$HOME/.shell/base16/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

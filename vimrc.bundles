@@ -37,12 +37,13 @@ Plugin 'w0rp/ale'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'godlygeek/tabular'
+Plugin 'junegunn/goyo.vim'
 
 " Colorschemes
-" Plugin 'chriskempson/base16-vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'dracula/vim'
-Plugin 'nightsense/stellarized'
+Plugin 'chriskempson/base16-vim'
+" Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'dracula/vim'
+" Plugin 'nightsense/stellarized'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

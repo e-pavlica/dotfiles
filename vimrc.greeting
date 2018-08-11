@@ -20,10 +20,10 @@ fun! Start()
 	" Our message goes here. Mine is simple.
 	"   call append('$', "
 	"   \")
-	exec ":syn match deltaFg '\\.'"
-	exec ":syn match deltaFg '[\.\`]:*[\.\'\`]'"
-	exec ":syn match deltaBg '\*'"
-	exec ":syn keyword deltaTxt EX ASTRIS SCIENTIA"
+	syn match deltaFg '\.'
+	syn match deltaFg '[\.\`]:*[\.\'\`]'
+	syn match deltaBg '\*'
+	syn keyword deltaTxt EX ASTRIS SCIENTIA
 	hi deltaBg term=reverse ctermfg=8 ctermbg=3 guifg=#838085 guibg=#dc8a0e
 	hi deltaFg ctermfg=0 ctermbg=7 guifg=#2e2a31 guibg=#bcbabe
 	hi deltaTxt ctermfg=6 guifg=#149bda
@@ -55,6 +55,10 @@ fun! Clear()
   hi clear deltaFg
   hi clear deltaTxt
   hi ExtraWhitespace ctermbg=9 guibg=#FF0000
+
+  " Make it obvious where 80 characters is
+  set textwidth=80
+  set colorcolumn=+1
 endfun
 
 " http://learnvimscriptthehardway.stevelosh.com/chapters/12.html

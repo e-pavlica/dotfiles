@@ -1,8 +1,6 @@
 # # GNU Screen Configuration
 encoding UTF-8
 
-# Terminal configuration
-term screen-256color
 
 hardstatus alwayslastline
 hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
@@ -22,9 +20,13 @@ startup_message off
 
 # 256 colors
 attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-defbce on
+# termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+truecolor on
+# defbce on
 altscreen on
+utf8 on
+# Terminal configuration
+term screen-256color
 
 # default windows
 screen 1 bash
@@ -39,11 +41,17 @@ bindkey ^[^[[C focus right
 bindkey ^[^[[A focus up
 bindkey ^[^[[B focus down
 
-# alacritty
+# alacritty (mac)
 bindkey ^[[1;3D focus left
 bindkey ^[[1;3C focus right
 bindkey ^[[1;3A focus up
 bindkey ^[[1;3B focus down
+
+# alacritty (linux)
+bindkey "^A^[OA" focus up
+bindkey "^A^[OB" focus down
+bindkey "^A^[OC" focus right
+bindkey "^A^[OD" focus left
 
 # F2 puts Screen into resize mode. Resize regions using hjkl keys.
 bindkey "^[OQ" eval "command -c rsz" # enter resize mode

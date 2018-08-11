@@ -71,12 +71,12 @@ augroup END
 
 " Color scheme
 set t_Co=256
-" let base16colorspace=256
+let base16colorspace=256
 set background=dark
-colorscheme PaperColor
+colorscheme base16-zenburn
 " Unset backgrounds for transparency
-" hi Normal  guibg=NONE ctermbg=NONE
-" hi NonText guibg=NONE ctermbg=NONE
+hi Normal  guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
@@ -89,12 +89,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_left_sep      = ''
 let g:airline_left_alt_sep  = ''
 
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
-
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
 
 " Numbers
 set number
