@@ -1,3 +1,4 @@
+# Language config
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -108,6 +109,10 @@ if command_exists git; then
   source ~/.git-completion.bash
 fi
 
+if command_exists vim; then
+  export EDITOR=vim
+fi
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -169,5 +174,3 @@ BASE16_SHELL=$HOME/.shell/base16/
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
-
-

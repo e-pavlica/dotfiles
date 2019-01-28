@@ -49,7 +49,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias bi='bundle install'
 alias be='bundle exec'
 alias ber='bundle exec rake'
+alias bes='bundle exec rspec'
 
 # Exit bash
 alias ex='exit'
 
+alias c=clear

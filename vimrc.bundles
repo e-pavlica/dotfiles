@@ -41,9 +41,6 @@ Plugin 'junegunn/goyo.vim'
 
 " Colorschemes
 Plugin 'chriskempson/base16-vim'
-" Plugin 'NLKNguyen/papercolor-theme'
-" Plugin 'dracula/vim'
-" Plugin 'nightsense/stellarized'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

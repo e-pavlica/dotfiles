@@ -34,6 +34,9 @@ select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10
 
+bind x  echo 'Lockscreen disabled'
+bind ^X echo 'Lockscreen disabled'
+
 # navigating regions with Alt + arrows
 # iterm
 bindkey ^[^[[D focus left

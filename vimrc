@@ -50,9 +50,14 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+  autocmd BufRead,BufNewFile .jshintrc set filetype=json
+  autocmd BufRead,BufNewFile *.inky set filetype=eruby.html
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
+
+  " Disable hidden quotes in JSON
+  autocmd FileType json setlocal cole=0
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
@@ -65,18 +70,21 @@ augroup vimrcEx
 
   " Set JS to indent at 4 spaces
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
-
 augroup END
 
 
 " Color scheme
 set t_Co=256
-let base16colorspace=256
-set background=dark
-colorscheme base16-zenburn
+" let base16colorspace=256
+" set background=dark
+" colorscheme base16-eighties
 " Unset backgrounds for transparency
-hi Normal  guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
+" hi Normal  guibg=NONE ctermbg=NONE
+" hi NonText guibg=NONE ctermbg=NONE
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
@@ -98,7 +106,7 @@ set numberwidth=5
 
 " Disable syntax highlighting after the first 200 columns
 " (speeds up vim when super long lines are present)
-" set synmaxcol=200
+set synmaxcol=200
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -165,7 +173,7 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 
 " Custom splash screen
-if filereadable($HOME . "/.vimrc.local")
+if filereadable($HOME . "/.vimrc.greeting")
   source ~/.vimrc.greeting
 endif
 
@@ -201,7 +209,7 @@ let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 
 " Convert Ruby 1.9 hash syntax to hashrocket style
-vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):/\1:\2 =>/<CR>
+vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
 " Convert Hashrocket syntax to Ruby 1.9 syntax
 vnoremap <Leader>!hr :s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 " Convert Single Quotes to Double Quotes
