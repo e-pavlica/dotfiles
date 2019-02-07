@@ -1,0 +1,47 @@
+---
+AllCops:
+  TargetRubyVersion: 2.5
+Layout/AlignHash:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FormatString:
+  EnforcedStyle: percent
+Style/HashSyntax:
+  Enabled: false
+Style/ModuleFunction:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/RaiseArgs:
+  EnforcedStyle: compact
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
