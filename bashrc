@@ -70,33 +70,37 @@ if [ "$color_prompt" = yes ]; then
   GREEN="\[\033[0;32m\]"
   PURPLE="\[\033[0;35m\]"
   YELLOW="\[\033[1;33m\]"
+  ARCH_FG="\[\033[38;5;39m\]"
+  USER_FG="\[\033[1;38;5;97m\]"
 
   # Symbols
-  TOP_LEFT=$'\xe2\x94\x8c'
-  BOTTOM_LEFT=$'\xe2\x94\x94'
+  TOP_LEFT=$'\xe2\x95\xad'
+  BOTTOM_LEFT=$'\xe2\x95\xb0'
   HORIZONTAL_LINE=$'\xe2\x94\x80'
   SPARKLE=$'\xe2\x9c\xa8'
+  ARCH=$'\xef\x8c\x83'
+  VERTICAL_LEFT_X=$'\u2524'
+  VERTICAL=$'\u2502'
+  DBL_ARROW_RIGHT=$'\u21a0'
+
+  KERNEL_RELEASE=$(uname -r)
+  if [[ $KERNEL_RELEASE =~ arch ]]; then
+    SYM=$ARCH_FG$ARCH
+  else
+    SYM=$SPARKLE
+  fi
 
   # BASH PS1 escapes
   USER="\u"
   SHORT_PATH="\w"
   NEW_LINE="\n"
   PROMPT_COMMAND='__git_ps1 \
-    "$PURPLE$TOP_LEFT[$BLUE$SPARKLE$YELLOW $USER$PURPLE][$BLACK$SHORT_PATH$PURPLE]$BLACK" \
-    "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK "'
+    "$PURPLE$TOP_LEFT$VERTICAL_LEFT_X$SYM $USER_FG$USER$PURPLE$VERTICAL$YELLOW$SHORT_PATH$PURPLE$VERTICAL$BLACK" \
+    "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK"'
 else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-  xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-  *)
-    ;;
-esac
 
 # Check if a specified program exists in PATH
 command_exists () {
