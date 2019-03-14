@@ -59,45 +59,62 @@ if [ -n "$force_color_prompt" ]; then
   fi
 fi
 
+__energize_ps1 () {
+  # Colors!
+  local BLACK="\[\033[00m\]"
+  local BLUE="\[\033[0;34m\]"
+  local RED="\[\033[0;31m\]"
+  local GREEN="\[\033[0;32m\]"
+  local PURPLE="\[\033[0;35m\]"
+  local YELLOW="\[\033[1;33m\]"
+  local WHITE="\[\033[1;37m\]"
+  local ARCH_FG="\[\033[38;5;39m\]"
+  local USER_FG="\[\033[1;38;5;97m\]"
+
+  # Symbols
+  local TOP_LEFT=$'\xe2\x95\xad'
+  local BOTTOM_LEFT=$'\xe2\x95\xb0'
+  local HORIZONTAL_LINE=$'\xe2\x94\x80'
+  local SPARKLE=$'\xe2\x9c\xa8'
+  local DARWIN=$'\xef\x85\xb9'
+  local ARCH=$'\xef\x8c\x83'
+  local RUBY=$'\xee\x88\x9e'
+  local JS=$'\xee\x9e\x81'
+  local RUST=$'\xee\x9e\xa8'
+  local VERTICAL_LEFT_X=$'\xe2\x94\xa4'
+  local VERTICAL=$'\xe2\x94\x82'
+  local DBL_ARROW_RIGHT=$'\xe2\x86\xa0'
+
+  if [[ -e Gemfile ]]; then
+    local SYM=$RED$RUBY
+  elif [[ -e package.json ]]; then
+    local SYM=$YELLOW$JS
+  elif [[ -e Cargo.toml ]]; then
+    local SYM=$BLUE$RUST
+  else
+    local KERNEL_RELEASE=$(uname -a)
+    if [[ $KERNEL_RELEASE =~ arch ]]; then
+      local SYM=$ARCH_FG$ARCH
+    elif [[ $KERNEL_RELEASE =~ Darwin ]]; then
+      local SYM=$WHITE$DARWIN
+    fi
+  fi
+
+  # BASH PS1 escapes
+  local USER="\u"
+  local SHORT_PATH="\w"
+  local NEW_LINE="\n"
+  __git_ps1 "$PURPLE$TOP_LEFT$HORIZONTAL_LINE$VERTICAL_LEFT_X$SYM $USER_FG$USER$PURPLE$VERTICAL$YELLOW$SHORT_PATH$PURPLE$VERTICAL$BLACK" \
+    "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK "
+}
+
 if [ "$color_prompt" = yes ]; then
   GIT_PS1_SHOWCOLORHINTS=true
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWUPSTREAM="auto"
 
-  # Colors!
-  BLACK="\[\033[00m\]"
-  BLUE="\[\033[0;34m\]"
-  GREEN="\[\033[0;32m\]"
-  PURPLE="\[\033[0;35m\]"
-  YELLOW="\[\033[1;33m\]"
-  ARCH_FG="\[\033[38;5;39m\]"
-  USER_FG="\[\033[1;38;5;97m\]"
-
-  # Symbols
-  TOP_LEFT=$'\xe2\x95\xad'
-  BOTTOM_LEFT=$'\xe2\x95\xb0'
-  HORIZONTAL_LINE=$'\xe2\x94\x80'
-  SPARKLE=$'\xe2\x9c\xa8'
-  ARCH=$'\xef\x8c\x83'
-  VERTICAL_LEFT_X=$'\u2524'
-  VERTICAL=$'\u2502'
-  DBL_ARROW_RIGHT=$'\u21a0'
-
-  KERNEL_RELEASE=$(uname -r)
-  if [[ $KERNEL_RELEASE =~ arch ]]; then
-    SYM=$ARCH_FG$ARCH
+  PROMPT_COMMAND='__energize_ps1'
   else
-    SYM=$SPARKLE
-  fi
-
-  # BASH PS1 escapes
-  USER="\u"
-  SHORT_PATH="\w"
-  NEW_LINE="\n"
-  PROMPT_COMMAND='__git_ps1 \
-    "$PURPLE$TOP_LEFT$VERTICAL_LEFT_X$SYM $USER_FG$USER$PURPLE$VERTICAL$YELLOW$SHORT_PATH$PURPLE$VERTICAL$BLACK" \
-    "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK"'
-else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
