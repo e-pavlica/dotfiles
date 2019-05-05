@@ -34,13 +34,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'w0rp/ale'
-Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/goyo.vim'
 
 " Colorschemes
-Plugin 'chriskempson/base16-vim'
+" Plugin 'chriskempson/base16-vim'
+Plugin 'danielwe/base16-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

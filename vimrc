@@ -54,7 +54,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.inky set filetype=eruby.html
 
   " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown,text setlocal spell
 
   " Disable hidden quotes in JSON
   autocmd FileType json setlocal cole=0

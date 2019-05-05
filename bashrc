@@ -104,6 +104,7 @@ __energize_ps1 () {
   local USER="\u"
   local SHORT_PATH="\w"
   local NEW_LINE="\n"
+  printf $'\ek%s\e\\' "${PWD##*/}"; # Set the GNU screen title to the current dir
   __git_ps1 "$PURPLE$TOP_LEFT$HORIZONTAL_LINE$VERTICAL_LEFT_X$SYM $USER_FG$USER$PURPLE$VERTICAL$YELLOW$SHORT_PATH$PURPLE$VERTICAL$BLACK" \
     "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK "
 }
@@ -114,7 +115,7 @@ if [ "$color_prompt" = yes ]; then
   GIT_PS1_SHOWUPSTREAM="auto"
 
   PROMPT_COMMAND='__energize_ps1'
-  else
+else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt

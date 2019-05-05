@@ -24,22 +24,19 @@ MSG
 
   # Linux-specific setup
 elif [[ $SYSTEM_TYPE =~ "Linux" ]]; then
-  DISTRIBUTION=`lsb_release -i`
+  DISTRIBUTION=`uname -r`
 
   # Arch Linux
-  if [[ $DISTRIBUTION =~ "Arch" ]]; then
+  if [[ $DISTRIBUTION =~ "arch" ]]; then
     echo '>>> Installing dev packages for Arch Linux'
-
-    #sudo pacman -Syu postgresql vim wget curl imagemagick screen \
-    #  openssl git gnupg coreutils memcached redis
 
     # Use the rcm package from the AUR since we need it right away
     echo '>>> Installing rcm...'
-    # git clone https://aur.archlinux.org/rcm.git tmp/rcm
-    # cd tmp/rcm
-    # makepkg -sri
-    # cd ~
-    # rm -rf tmp/rcm
+    git clone https://aur.archlinux.org/rcm.git /tmp/rcm
+    cd /tmp/rcm
+    makepkg -sri
+    cd ~
+    rm -rf /tmp/rcm
 
     cat <<-END
     Installed standard dev packages.
