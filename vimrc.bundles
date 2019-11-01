@@ -40,8 +40,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'junegunn/goyo.vim'
 
 " Colorschemes
-" Plugin 'chriskempson/base16-vim'
-Plugin 'danielwe/base16-vim'
+Plugin 'chriskempson/base16-vim'
+" Plugin 'danielwe/base16-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

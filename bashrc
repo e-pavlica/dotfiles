@@ -104,7 +104,9 @@ __energize_ps1 () {
   local USER="\u"
   local SHORT_PATH="\w"
   local NEW_LINE="\n"
-  printf $'\ek%s\e\\' "${PWD##*/}"; # Set the GNU screen title to the current dir
+  if [[ $TERM =~ ^screen ]]; then
+    printf $'\ek%s\e\\' "${PWD##*/}"; # Set the GNU screen title to the current dir
+  fi
   __git_ps1 "$PURPLE$TOP_LEFT$HORIZONTAL_LINE$VERTICAL_LEFT_X$SYM $USER_FG$USER$PURPLE$VERTICAL$YELLOW$SHORT_PATH$PURPLE$VERTICAL$BLACK" \
     "$NEW_LINE$PURPLE$BOTTOM_LEFT$HORIZONTAL_LINE$BLACK "
 }
@@ -196,3 +198,7 @@ BASE16_SHELL=$HOME/.shell/base16/
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
+if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+  source /usr/share/bash-completion/bash_completion
+fi

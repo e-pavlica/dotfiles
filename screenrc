@@ -29,7 +29,7 @@ utf8 on
 term screen-256color
 
 # default windows
-screen 1 bash
+screen 1 $SHELL
 select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10
