@@ -10,12 +10,16 @@ set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set noshowmode    " Don't show mode in lastline; this is in the lightline instead
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
+set showtabline=2
+set guioptions-=e
 set autowrite     " Automatically :write before running commands
+set redrawtime=10000 " Give the syntax hightlighter more time on large files
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -75,34 +79,32 @@ augroup END
 
 " Color scheme
 set t_Co=256
-" let base16colorspace=256
-" set background=dark
-" colorscheme base16-eighties
-" Unset backgrounds for transparency
-" hi Normal  guibg=NONE ctermbg=NONE
-" hi NonText guibg=NONE ctermbg=NONE
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 
-" Airline Customization
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#right_sep     = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline#extensions#tabline#left_sep      = ''
-let g:airline#extensions#tabline#left_alt_sep  = ''
-let g:airline_right_sep     = ''
-let g:airline_right_alt_sep = ''
-let g:airline_left_sep      = ''
-let g:airline_left_alt_sep  = ''
+" Changes SpellBad highlight since text is unreadble with Base16 themes
+hi SpellBad ctermbg=19
 
-let g:airline_theme = 'base16'
+" Airline Customization
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#right_sep     = ''
+" let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline#extensions#tabline#left_sep      = ''
+" let g:airline#extensions#tabline#left_alt_sep  = ''
+" let g:airline_right_sep     = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_left_sep      = ''
+" let g:airline_left_alt_sep  = ''
+
+let g:airline_theme = 'base16_vim'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " Numbers
 set number
-set numberwidth=5
+set numberwidth=4
 
 " Disable syntax highlighting after the first 200 columns
 " (speeds up vim when super long lines are present)
@@ -153,13 +155,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" configure syntastic syntax checking to check on open as well as save
-" let g:syntastic_check_on_open=1
-" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-" let g:syntastic_javascript_checkers = ['jshint']
-" let g:syntastic_html_checkers = ['jshint', 'csslint']
-" let g:syntastic_ruby_checkers = ['rubocop']
-
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -194,19 +189,25 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_use_caching = 0
 endif
 
 " Run rspec commands in a GNU Screen window
-let g:rspec_command = 'SlimeSend0("bundle exec rspec -f d {spec}\n")'
+" let g:rspec_command = 'SlimeSend0("bundle exec rspec -f d {spec}\n")'
+let g:rspec_command = 'SlimeSend0("bundle exec rspec {spec}\n")'
 
 " Make easytags a little perform a bit better
-let g:easytags_async=1
-let g:easytags_auto_highlight=0
+" let g:easytags_async=1
+" let g:easytags_auto_highlight=0
 
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_sign_column_always = 1
+" let g:indentLine_setConceal = 0
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Convert Ruby 1.9 hash syntax to hashrocket style
 vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
@@ -226,3 +227,4 @@ function! FrozenStringLiteralRB()
   normal! ``
 endfunction
 nnoremap <Leader>fsl :call FrozenStringLiteralRB()<CR>
+

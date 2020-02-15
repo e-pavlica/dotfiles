@@ -7,7 +7,7 @@ Pry.config.prompt = [
 
 Pry.config.editor = 'vim'
 
-Pry::Commands.alias_command 'ex', 'exit'
+# Pry::Commands.alias_command 'ex', 'exit'
 #
 # if Kernel.const_defined?('Rails')
 #   # load Rails Console helpers like reload

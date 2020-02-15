@@ -47,4 +47,4 @@
   required = true
 
 [commit]
-	# gpgsign = true
+	gpgsign = true

@@ -1,7 +1,6 @@
 # # GNU Screen Configuration
 encoding UTF-8
 
-
 hardstatus alwayslastline
 hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
 # caption splitonly "%?%F%{.w.}%?%{= M} %= %n %{= B}%t %="
@@ -62,3 +61,5 @@ bind -c rsz h eval "resize -h -5" "command -c rsz"
 bind -c rsz j eval "resize -v -5" "command -c rsz"
 bind -c rsz k eval "resize -v +5" "command -c rsz"
 bind -c rsz l eval "resize -h +5" "command -c rsz"
+
+source .screenrc.local
