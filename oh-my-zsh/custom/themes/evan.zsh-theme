@@ -2,12 +2,12 @@
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 function _prompt_sym() {
-  local SPARKLE=$'\xe2\x9c\xa8'
-  local DARWIN=$'\xef\x85\xb9'
-  local ARCH=$'\xef\x8c\x83'
-  local RUBY=$'\xee\x88\x9e'
-  local JS=$'\xee\x9e\x81'
-  local RUST=$'\xee\x9e\xa8'
+  local SPARKLE=✨
+  local DARWIN=
+  local ARCH=
+  local RUBY=
+  local JS=
+  local RUST=
 
   local SYM="$SPARKLE"
 
@@ -32,10 +32,18 @@ function _prompt_sym() {
 local current_dir='%F{yellow}%~%f'
 local git_branch='$(git_super_status)'
 local prompt_sym='$(_prompt_sym)'
-local user='%F{#875faf}%n%f'
+local user='%B%F{#875faf}%n%f%u%b%s'
 
-PROMPT="%F{magenta}╭─┤%f${prompt_sym} ${user}%F{magenta}│%f${current_dir}%F{magenta}│%f ${git_branch}
-%F{magenta}╰─%f "
+function random_color() {
+  local COLORS=(red blue green yellow magenta cyan)
+  local N=${#COLORS[@]}
+  ((N=(RANDOM%N)+1))
+  echo "${COLORS[$N]}"
+}
+local line_color=$(random_color)
+
+PROMPT="%F{$line_color}╭─┤%f${prompt_sym} ${user}%F{$line_color}│%f${current_dir}%F{$line_color}│%f ${git_branch}
+%F{$line_color}╰─%f "
 RPROMPT="%B${return_code}%b"
 
-# vi: ft=sh :
+# vi: ft=zsh :
