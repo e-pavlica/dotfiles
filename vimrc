@@ -88,15 +88,15 @@ endif
 hi SpellBad ctermbg=19
 
 " Airline Customization
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#right_sep     = ''
-" let g:airline#extensions#tabline#right_alt_sep = ''
-" let g:airline#extensions#tabline#left_sep      = ''
-" let g:airline#extensions#tabline#left_alt_sep  = ''
-" let g:airline_right_sep     = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_left_sep      = ''
-" let g:airline_left_alt_sep  = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#right_sep     = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep      = ''
+let g:airline#extensions#tabline#left_alt_sep  = ''
+let g:airline_right_sep     = ''
+let g:airline_right_alt_sep = ''
+let g:airline_left_sep      = ''
+let g:airline_left_alt_sep  = ''
 
 let g:airline_theme = 'base16_vim'
 let g:airline_powerline_fonts = 1
@@ -191,6 +191,9 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   " let g:ctrlp_use_caching = 0
 endif
+
+" Instead of Ctrl-P, use <Leader>p + FZF
+map <Leader>p :FZF<CR>
 
 " Run rspec commands in a GNU Screen window
 " let g:rspec_command = 'SlimeSend0("bundle exec rspec -f d {spec}\n")'
