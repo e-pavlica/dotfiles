@@ -68,7 +68,7 @@ ZSH_THEME="evan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker npm rbenv git-prompt)
+plugins=(docker docker-compose gitfast npm rbenv git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
