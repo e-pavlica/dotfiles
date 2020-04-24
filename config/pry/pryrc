@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+PROMPT = [
+  proc { "\e[31m \e[34mpry \e[37;1m\e[0m " },
+  proc { " \e[31m pry \e[37;1m\e[0m " }
+].freeze
+
+Pry.config.prompt = if Pry::Prompt.respond_to?(:new)
+                      Pry::Prompt.new('custom', 'epavlica', PROMPT)
+                    else
+                      PROMPT
+                    end
+
+Pry.config.editor = 'vim'
+
+Pry::Commands.alias_command 'ex', 'exit'
+Pry::Commands.block_command '_methods', 'list an objects\'s own methods' do |obj|
+  (obj.methods - Object.methods).sort
+end
+
+# Stop obnoxious Deprecation warning from Rails
+Pry::Hooks.new.add_hook(:before_session, :stfu) do
+  puts SourceAnnotationExtractor if Object.const_defined?(:SourceAnnotationExtractor)
+  Object.send(:remove_const, :SourceAnnotationExtractor) if Object.const_defined?(:SourceAnnotationExtractor)
+end
+
+# vim: ft=ruby :
