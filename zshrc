@@ -68,7 +68,7 @@ ZSH_THEME="evan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker docker-compose gitfast npm rbenv git-prompt)
+plugins=(docker docker-compose fzf gitfast gpg-agent npm rbenv git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~:%#"
 # Use vim bindings
 bindkey -v
+setopt correct
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -87,7 +88,7 @@ export XDG_CONFIG_HOME=~/.config/
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -157,14 +158,6 @@ fi
 
 if [ -d ~/.local/bin ]; then
   export PATH="~/.local/bin:$PATH"
-fi
-
-# Load GPG Agent
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
 
 # Base16 Shell
