@@ -79,7 +79,7 @@ debug:
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-# custom_cursor_colors: false
+custom_cursor_colors: true
 
 # Colors (Tomorrow Night Bright)
 colors:
@@ -91,7 +91,7 @@ colors:
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
     text: '0x000000'
-    cursor: '0xffffff'
+    cursor: '0xb77ee0'
 
   # Normal colors
   normal:
@@ -190,7 +190,7 @@ dynamic_title: true
 # - Underline
 # - Beam
 cursor:
-  style: Underline
+  style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -241,6 +241,7 @@ key_bindings:
   - { key: V,        mods: Control|Shift,    action: Paste               }
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Q,        mods: Control, action: Quit                         }
+  - { key: N,        mods: Command,      action: SpawnNewInstance       }
   # - { key: W,        mods: Control, action: Quit                         }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
