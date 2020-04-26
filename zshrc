@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/evan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,6 +74,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~:%#"
+# Use vim bindings
+bindkey -v
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -131,6 +133,8 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 alias bes='bundle exec rspec'
 
+alias screen='TERM=screen-256color screen'
+
 # Exit
 alias ex='exit'
 
@@ -153,6 +157,14 @@ fi
 
 if [ -d ~/.local/bin ]; then
   export PATH="~/.local/bin:$PATH"
+fi
+
+# Load GPG Agent
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+  source ~/.gnupg/.gpg-agent-info
+  export GPG_AGENT_INFO
+else
+  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
 
 # Base16 Shell

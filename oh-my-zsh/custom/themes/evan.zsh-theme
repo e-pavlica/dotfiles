@@ -3,7 +3,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 function _prompt_sym() {
   local SPARKLE=✨
-  local DARWIN=
+  local DARWIN=
   local ARCH=
   local RUBY=
   local JS=
@@ -29,7 +29,7 @@ function _prompt_sym() {
   echo $SYM
 }
 
-local current_dir='%F{yellow}%~%f'
+local current_dir="%F{yellow}%{[3m%}%~%{[23m%}%f"
 local git_branch='$(git_super_status)'
 local prompt_sym='$(_prompt_sym)'
 local user='%B%F{#875faf}%n%f%u%b%s'

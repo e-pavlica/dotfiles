@@ -43,7 +43,7 @@ function omz_termsupport_preexec {
   fi
 
   # cmd name only, or if this is sudo or ssh, the next cmd
-  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}
+  local CMD=${1[(wr)^(*=*|sudo|ssh|mosh|rake|be|ber|-*)]:gs/%/%%}
   local LINE="${2:gs/%/%%}"
 
   title '%1~:$CMD' '%100>...>$LINE%<<'
