@@ -12,9 +12,10 @@ Plugin 'gmarik/Vundle.vim'
 " Define bundles via Github repos
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
-Plugin 'vim-airline/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'jpalardy/vim-slime'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/goyo.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'pangloss/vim-javascript'
 Plugin 'pbrisbin/vim-mkdir'
@@ -30,18 +31,15 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'w0rp/ale'
-" Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
-Plugin 'godlygeek/tabular'
-Plugin 'junegunn/goyo.vim'
 
 " Colorschemes
 Plugin 'chriskempson/base16-vim'
-" Plugin 'danielwe/base16-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

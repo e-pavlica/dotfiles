@@ -52,6 +52,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.es6 set filetype=javascript
   autocmd BufRead,BufNewFile .jshintrc set filetype=json
   autocmd BufRead,BufNewFile *.inky set filetype=eruby.html
+  autocmd BufRead,BufNewFile *.svelte set filetype=html
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown,text setlocal spell
@@ -72,19 +73,18 @@ augroup vimrcEx
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
 augroup END
 
+let g:indentLine_fileTypeExclude = ['markdown', 'json']
+ 
 
 " Color scheme
 set t_Co=256
-" let base16colorspace=256
-" set background=dark
-" colorscheme base16-eighties
-" Unset backgrounds for transparency
-" hi Normal  guibg=NONE ctermbg=NONE
-" hi NonText guibg=NONE ctermbg=NONE
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
+  highlight Comment cterm=italic gui=italic
 endif
+set t_ZH=[3m
+set t_ZR=[23m
 
 " Airline Customization
 let g:airline#extensions#tabline#enabled = 1
@@ -189,12 +189,6 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 " Run rspec commands in a GNU Screen window
@@ -208,6 +202,8 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 
+" Use FZF for fuzzy search
+nmap <Leader>p :FZF<CR>
 " Convert Ruby 1.9 hash syntax to hashrocket style
 vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
 " Convert Hashrocket syntax to Ruby 1.9 syntax
