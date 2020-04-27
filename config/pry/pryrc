@@ -15,7 +15,7 @@ Pry.config.editor = 'vim'
 
 Pry::Commands.alias_command 'ex', 'exit'
 Pry::Commands.block_command '_methods', 'list an objects\'s own methods' do |obj|
-  (obj.methods - Object.methods).sort
+  output.puts((obj.methods - Object.methods).sort)
 end
 
 # Stop obnoxious Deprecation warning from Rails
