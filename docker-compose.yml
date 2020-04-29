@@ -1,90 +1,43 @@
 ---
 version: '3'
 services:
-  redis:
-    image: redis:5.0.5
-    ports:
-      - 6379:6379
-    networks:
-      - overlay
-  elasticsearch:
-    image: elasticsearch:6.8.0
-    environment:
-      - discovery.type=single-node
-      - cluster.name=runner
-      - node.name=es01
-      - bootstrap.memory_lock=true
-      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
-    ports:
-      - 9200:9200
-      - 9300:9300
-    networks:
-      - overlay
-    volumes:
-      - esdata:/usr/share/elasticsearch/data
-    logging: &logging
-      driver: json-file
-      options:
-        max-size: '200k'
-        max-file: '10'
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.8.0
-    ports:
-      - 5601:5601
-    networks:
-      - overlay
-    depends_on:
-      - elasticsearch
-    logging: *logging
-  postgresql:
-    image: 'postgres:9.6'
-    ports:
-      - 5432:5432
-    networks:
-      - overlay
-    volumes:
-      - pg-data:/var/lib/postgresql/data
-    logging: *logging
-    environment:
-      - POSTGRES_USER=${USER}
-  dev: &rails
+  dev:
     tty: true
     stdin_open: true
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    # env_file:
+    env_file:
       # Absolute or relative path to the secrets file on your local machine
-      # - ../../.credentials/dev/phoenix/config/dotenv/development.secrets.env
+      - ../.env
     environment:
       - DATABASE_HOSTNAME=postgresql
-      - DB_USERNAME=${USER}
-      - ELASTIC_SEARCH_HOST=elasticsearch:9200
-      - REDIS_HOST=redis
-      - ENABLE_BOOTSNAP=false
-      - KARMA_DRIVER=ChromiumHeadlessDocker
+      - DB_USERNAME=postgres
+      - NODE_EXTRA_CA_CERTS=/etc/ca-certificates/trust-source/anchors/GNSServicesCA.crt
+      - NPM_CONFIG_CACHE=/opt/node/.npm
+      - NPM_CONFIG_STRICT_SSL=false
+      - NVM_DIR=/opt/node/.nvm
+      - RBENV_ROOT=/opt/rbenv
     volumes:
       - dev-data:/home/epavlica/projects
+      - npm-cache:/opt/node
+      - ruby-cache:/opt/rbenv
+      - ../.git-credential-store:/home/epavlica/.git-credential-store
+      - ../.credentials:/home/epavlica/.credentials
+      - ../.ssh:/home/epavlica/.ssh
+      - ../.gnupg:/home/epavlica/.gnupg
     ports:
-      - 3000:3000 # rails
-      - 3035:3035 # webpack-dev-server
-      - 9876:9876 # others
-    command: bash
+      - 3000-3030:3000-3030
     networks:
       - overlay
-    # links:
-    #   - postgresql
-    #   - elasticsearch
-    #   - redis
-    logging: *logging
+    user: epavlica
 
 volumes:
   dev-data:
     external: true
-  pg-data:
-    external: true
-  esdata:
-    external: true
+  ruby-cache:
+  npm-cache:
 
 networks:
   overlay:
+    external: true

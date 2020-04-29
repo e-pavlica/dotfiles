@@ -198,4 +198,3 @@ BASE16_SHELL=$HOME/.shell/base16/
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
-

@@ -68,7 +68,7 @@ ZSH_THEME="evan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker docker-compose fzf gitfast gpg-agent npm rbenv git-prompt)
+plugins=(docker docker-compose fzf gitfast gpg-agent npm nvm rbenv git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -151,18 +151,13 @@ man() {
 		man "$@"
 }
 
+[[ -n "$SHELL" ]] || export SHELL=$(which zsh)
+[[ -f "$HOME/.env" ]] && source "$HOME/.env"
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 # add the ~/.bin to PATH if it exists
-if [ -d ~/.bin ]; then
-  export PATH="~/.bin:$PATH"
-fi
-
-if [ -d ~/.local/bin ]; then
-  export PATH="~/.local/bin:$PATH"
-fi
+[[ -d ~/.bin ]] && export PATH="~/.bin:$PATH"
+[[ -d ~/.local/bin ]] && export PATH="~/.local/bin:$PATH"
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.shell/base16/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Local overrides
-[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

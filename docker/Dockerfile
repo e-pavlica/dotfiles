@@ -10,6 +10,7 @@ RUN sed -i '/NoExtract/d' /etc/pacman.conf
 RUN pacman -Syu --noconfirm \
   base-devel \
   chromium \
+  fzf \
   git \
   imagemagick \
   less \
@@ -17,33 +18,52 @@ RUN pacman -Syu --noconfirm \
   libyaml \
   man \
   mlocate \
-  nodejs-lts-dubnium \
   openssl \
   postgresql-libs \
+  python2 \
   python-pip \
   screen \
   sudo \
+  the_silver_searcher \
   vim \
-  zlib
+  zlib \
+  zsh
 
 # Install AWS CLI
 RUN pip install awscli --upgrade
 
-# Create user
-RUN groupadd --gid 9999 epavlica
-RUN useradd --uid 9999 --gid 9999 --groups wheel -m epavlica
-RUN passwd -d epavlica
-RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/enable_wheel
+ARG USERNAME=epavlica
 
-USER epavlica
-WORKDIR /home/epavlica
-COPY --chown=epavlica . /home/epavlica/.dotfiles
+# Create user
+RUN groupadd --gid 9000 $USERNAME && \
+    groupadd --gid 9001 devs && \
+    useradd --uid 9000 --gid 9000 --groups devs,wheel -m $USERNAME && \
+    passwd -d $USERNAME && \
+    echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/enable_wheel && \
+    chsh -s $(which zsh) $USERNAME
+
+COPY ./docker/entrypoint.sh /etc/entrypoint.sh
+
+USER $USERNAME
+
+# Install Oh My ZSH
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install rcm
-RUN mkdir /home/epavlica/AUR
-RUN git clone https://aur.archlinux.org/rcm.git /home/epavlica/AUR/rcm
-WORKDIR /home/epavlica/AUR/rcm
-RUN makepkg -sri --noconfirm
+RUN mkdir /home/$USERNAME/AUR && \
+    git clone https://aur.archlinux.org/rcm.git /home/$USERNAME/AUR/rcm && \
+    cd /home/$USERNAME/AUR/rcm && \
+    makepkg -sri --noconfirm
 
-WORKDIR /home/epavlica
+WORKDIR /home/$USERNAME
+COPY --chown=$USERNAME . /home/$USERNAME/.dotfiles
+
+WORKDIR /home/$USERNAME
 RUN rcup -f -x INSTALL* -x README* -x docker*
+
+USER root
+ENTRYPOINT ["/etc/entrypoint.sh"]
+CMD ["zsh"]
+
+# Install ruby-build and ruby via rbenv
+# Install node via NVM
