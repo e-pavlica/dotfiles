@@ -1,0 +1,43 @@
+---
+version: '3'
+services:
+  dev:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      # Absolute or relative path to the secrets file on your local machine
+      - ../.env
+    environment:
+      - DATABASE_HOSTNAME=postgresql
+      - DB_USERNAME=postgres
+      - NODE_EXTRA_CA_CERTS=/etc/ca-certificates/trust-source/anchors/GNSServicesCA.crt
+      - NPM_CONFIG_CACHE=/opt/node/.npm
+      - NPM_CONFIG_STRICT_SSL=false
+      - NVM_DIR=/opt/node/.nvm
+      - RBENV_ROOT=/opt/rbenv
+    volumes:
+      - dev-data:/home/epavlica/projects
+      - npm-cache:/opt/node
+      - ruby-cache:/opt/rbenv
+      - ../.git-credential-store:/home/epavlica/.git-credential-store
+      - ../.credentials:/home/epavlica/.credentials
+      - ../.ssh:/home/epavlica/.ssh
+      - ../.gnupg:/home/epavlica/.gnupg
+    ports:
+      - 3000-3030:3000-3030
+    networks:
+      - overlay
+    user: epavlica
+
+volumes:
+  dev-data:
+    external: true
+  ruby-cache:
+  npm-cache:
+
+networks:
+  overlay:
+    external: true

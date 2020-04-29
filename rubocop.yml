@@ -23,6 +23,8 @@ Metrics/MethodLength:
   Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 Style/ClassAndModuleChildren:

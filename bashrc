@@ -198,7 +198,3 @@ BASE16_SHELL=$HOME/.shell/base16/
 
 # Local overrides
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
-
-if [[ -f /usr/share/bash-completion/bash_completion ]]; then
-  source /usr/share/bash-completion/bash_completion
-fi

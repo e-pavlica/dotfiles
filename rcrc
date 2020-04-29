@@ -1,1 +1,2 @@
-EXCLUDES="README.md INSTALL.sh"
+EXCLUDES="README.md INSTALL.sh docker docker-compose.yml"
+UNDOTTED="werk"

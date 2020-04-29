@@ -51,6 +51,11 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 alias bes='bundle exec rspec'
 
+# Docker Compose aliases
+alias dc='docker-compose'
+alias dce='docker-compose exec'
+alias dcu='docker-compose up -d'
+
 # Exit bash
 alias ex='exit'
 
