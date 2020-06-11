@@ -74,6 +74,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~:%#"
+# load nearcolor module if GNU screen
+[[ $TERM != "screen-256color" ]] || zmodload zsh/nearcolor
 # Use vim bindings
 bindkey -v
 setopt correct
@@ -155,8 +157,14 @@ man() {
 [[ -f "$HOME/.env" ]] && source "$HOME/.env"
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 # add the ~/.bin to PATH if it exists
-[[ -d ~/.bin ]] && export PATH="~/.bin:$PATH"
-[[ -d ~/.local/bin ]] && export PATH="~/.local/bin:$PATH"
+for DIR ( '' 'local/' 'cargo/')
+do
+  if [ -d ~/.${DIR}bin ]; then
+    path+=~/.${DIR}bin
+  fi
+done
+
+export PATH
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.shell/base16/

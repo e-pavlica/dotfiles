@@ -202,6 +202,10 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 
+" Base16 SpellBad is too hard to read; use WarningMsg instead
+hi clear SpellBad
+hi link SpellBad WarningMsg
+
 " Use FZF for fuzzy search
 nmap <Leader>p :FZF<CR>
 " Convert Ruby 1.9 hash syntax to hashrocket style
