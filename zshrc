@@ -63,24 +63,27 @@ ZSH_THEME="evan"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+ZSH_DOTENV_PROMPT=false
+ZSH_DOTENV_FILE=.secrets.local
+FZF_BASE=/usr/local/opt/fzf
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker docker-compose fzf gitfast gpg-agent npm nvm rbenv git-prompt)
+plugins=(docker docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~:%#"
+
 # load nearcolor module if GNU screen
 [[ $TERM != "screen-256color" ]] || zmodload zsh/nearcolor
-# Use vim bindings
-bindkey -v
-setopt correct
 
-# export MANPATH="/usr/local/man:$MANPATH"
+bindkey -v # Use vim bindings
+setopt correct # prompt to correct typos
 
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
@@ -89,23 +92,9 @@ export LANGUAGE=en_US.UTF-8
 export XDG_CONFIG_HOME=~/.config/
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export FZF_DEFAULT_COMMAND="ag --nocolor -g '' -l"
 
 # ls aliases
 alias ll='ls -alhF'
@@ -154,18 +143,25 @@ man() {
 }
 
 [[ -n "$SHELL" ]] || export SHELL=$(which zsh)
-[[ -f "$HOME/.env" ]] && source "$HOME/.env"
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
 # add the ~/.bin to PATH if it exists
-for DIR ( '' 'local/' 'cargo/')
+for DIR ( '' 'local/' 'cargo/' 'rbenv/')
 do
   if [ -d ~/.${DIR}bin ]; then
     path+=~/.${DIR}bin
   fi
 done
 
+FOUND_RBENV=$+commands[rbenv]
+[[ $FOUND_RBENV -eq 1 ]] && eval "$(rbenv init -)"
+
 export PATH
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.shell/base16/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

@@ -197,4 +197,5 @@ BASE16_SHELL=$HOME/.shell/base16/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Local overrides
+[[ -f ~/.secrets.local ]] && source ~/.secrets.local
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

@@ -1,5 +1,4 @@
 [user]
-  # name = Evan Pavlica & Daniel Kim
   # name = Evan Pavlica & William Andrews
   # name = Evan Pavlica & Patrick Collins
   name = Evan Pavlica
@@ -29,7 +28,8 @@
 
 [core]
   editor = vim
-  excludesfile = /Users/epavlica/.gitignore_global
+  excludesfile = ~/.gitignore_global
+	ignorecase = false
 
 [apply]
   whitespace = nowarn
@@ -38,8 +38,10 @@
   pretty = %Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %s
 
 [alias]
+  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   gr = log --graph --date-order -C -M --pretty=format:\"%Cblue%h%Creset %Cgreen[%ad]%Creset (%an) %Cgreen%d%Creset %s\" --all --date=short
   lol = log -n 10 --graph --pretty=\"%C(yellow)%h %C(reset)| %s | %C(blue)%an %C(reset)| %C(green)%ar\"
+  mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [filter "lfs"]
   clean = git-lfs clean %f
@@ -48,3 +50,4 @@
 
 [commit]
 	gpgsign = true
+	template = ~/.gitmessage

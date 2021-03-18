@@ -35,6 +35,10 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" Enable code folding but don't fold up
+set foldlevel=25
+set foldmethod=syntax
+
 augroup vimrcEx
   autocmd!
 
@@ -52,7 +56,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.es6 set filetype=javascript
   autocmd BufRead,BufNewFile .jshintrc set filetype=json
   autocmd BufRead,BufNewFile *.inky set filetype=eruby.html
-  autocmd BufRead,BufNewFile *.svelte set filetype=html
+  " autocmd BufRead,BufNewFile *.svelte set filetype=html
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown,text setlocal spell
@@ -69,12 +73,15 @@ augroup vimrcEx
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+  autocmd FileType yaml setlocal foldmethod=indent
   " Set JS to indent at 4 spaces
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
 augroup END
 
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
- 
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_faster = 1
+let g:indentLine_leadingSpaceChar = '·'
 
 " Color scheme
 set t_Co=256
@@ -192,7 +199,7 @@ if executable('ag')
 endif
 
 " Run rspec commands in a GNU Screen window
-let g:rspec_command = 'SlimeSend0("bundle exec rspec -f d {spec}\n")'
+let g:rspec_command = 'SlimeSend0("bundle exec rspec {spec}\n")'
 
 " Make easytags a little perform a bit better
 let g:easytags_async=1
@@ -201,6 +208,8 @@ let g:easytags_auto_highlight=0
 let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
+let g:html_indent_script1 = 'zero'
+let g:html_indent_style1 = 'zero'
 
 " Base16 SpellBad is too hard to read; use WarningMsg instead
 hi clear SpellBad
@@ -226,3 +235,16 @@ function! FrozenStringLiteralRB()
   normal! ``
 endfunction
 nnoremap <Leader>fsl :call FrozenStringLiteralRB()<CR>
+
+" Deduplicate a range of lines
+" must be EXACT duplicates, e.g. for
+"   aaa
+"   aaa
+"   aaa
+"   bba
+"   bbb
+" would delete two of the three 'aaa' lines
+vnoremap <Leader>dedup :s/^\(.*$\)\(\n\1\)\+/\1/<CR>
+
+" Create a Scratch buffer
+command! Scratch new | setlocal bt=nofile bh=wipe nobl noswapfile nu

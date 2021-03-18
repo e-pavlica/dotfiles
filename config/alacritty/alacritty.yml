@@ -6,6 +6,7 @@ window:
   dimensions:
     columns: 96
     lines: 32
+  dynamic_title: true
   padding:
     x: 2
     y: 2
@@ -52,7 +53,6 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true
 
-dynamic_title: true
 cursor:
   style: Block
 
