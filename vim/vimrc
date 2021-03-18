@@ -23,8 +23,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.vim/vimrc.bundles"))
+  source ~/.vim/vimrc.bundles
 endif
 
 filetype plugin indent on
@@ -175,13 +175,13 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 set diffopt+=vertical
 
 " Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
+if filereadable($HOME . "/.vim/vimrc.local")
+  source ~/.vim/vimrc.local
 endif
 
 " Custom splash screen
-if filereadable($HOME . "/.vimrc.greeting")
-  source ~/.vimrc.greeting
+if filereadable($HOME . "/.vim/vimrc.greeting")
+  source ~/.vim/vimrc.greeting
 endif
 
 " Config EasyMotion

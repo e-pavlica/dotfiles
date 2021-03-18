@@ -29,7 +29,7 @@ fun! Start()
 	hi deltaTxt ctermfg=6 guifg=#149bda
   hi clear ExtraWhitespace
 	IndentLinesDisable
-	r ~/.delta.txt
+	r ~/.vim/delta.txt
   let padding_columns = (&columns - 31) / 2
   let padding = repeat(' ', padding_columns)
   %s/^/\=padding/
