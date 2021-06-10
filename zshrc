@@ -144,6 +144,7 @@ man() {
 
 [[ -n "$SHELL" ]] || export SHELL=$(which zsh)
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+[[ -f "$HOME/.config/python/setup.py" ]] && export PYTHONSTARTUP="$HOME/.config/python/setup.py"
 
 # add the ~/.bin to PATH if it exists
 for DIR ( '' 'local/' 'cargo/' 'rbenv/')
@@ -165,3 +166,7 @@ BASE16_SHELL=$HOME/.shell/base16/
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Use all the cores
+(( $+commands[nproc] )) && export MAKE="make --jobs $(nproc)"
+(( $+commands[gnproc] )) && export MAKE="make --jobs $(gnproc)"
