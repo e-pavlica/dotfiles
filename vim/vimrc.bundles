@@ -43,8 +43,8 @@ Plugin 'xolox/vim-misc'
 " Colorschemes
 Plugin 'chriskempson/base16-vim'
 
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
+if filereadable(expand("./vimrc.bundles.local"))
+  source ./vimrc.bundles.local
 endif
 
 call vundle#end()

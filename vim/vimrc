@@ -12,6 +12,7 @@ set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set history=50
 set ruler         " show the cursor position all the time
+set cursorline    " highlight the line the cursor is on, so it's easier to find in large files
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
@@ -38,6 +39,10 @@ set expandtab
 " Enable code folding but don't fold up
 set foldlevel=25
 set foldmethod=syntax
+
+" Show tabs and eol
+set list
+set listchars=tab:▸\ ,eol:¬
 
 augroup vimrcEx
   autocmd!
@@ -74,6 +79,10 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   autocmd FileType yaml setlocal foldmethod=indent
+
+  " Prevent python files from autowrapping
+  autocmd FileType python setlocal textwidth=0
+
   " Set JS to indent at 4 spaces
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
 augroup END
@@ -205,9 +214,9 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 let g:ale_fixers = {
-      \ 'python': ['autopep8'],
       \ 'ruby':   ['rubocop'],
       \}
+let g:ale_python_auto_pipenv = 1
 
 " Don't do extra indenting of js and css in HTMKL files
 let g:html_indent_script1 = 'zero'
