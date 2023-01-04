@@ -37,6 +37,9 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+set textwidth=100
+set colorcolumn=+1
+
 " Enable code folding but don't fold up
 set foldlevel=25
 set foldmethod=syntax
@@ -224,6 +227,9 @@ let g:ale_python_auto_pipenv = 1
 " Don't do extra indenting of js and css in HTMKL files
 let g:html_indent_script1 = 'zero'
 let g:html_indent_style1 = 'zero'
+
+" Allow inline sytnax highlighting in markdown
+let g:markdown_fenced_languages = ['python', 'json', 'ruby', 'javascript']
 
 " Pre-fill the GNU screen session for slime
 let g:slime_default_config = {"sessionname": $STY, "windowname": 6}

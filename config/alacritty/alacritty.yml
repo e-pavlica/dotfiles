@@ -10,6 +10,7 @@ window:
     columns: 96
     lines: 32
   dynamic_title: true
+  opacity: 0.9
   padding:
     x: 2
     y: 2
@@ -27,14 +28,13 @@ font:
   italic:
     family: *family
     style: Italic
-  size: 14.0
+  size: 12.0
   offset:
     x: 0
     y: 0
   glyph_offset:
     x: 0
     y: 0
-  use_thin_strokes: true
 
 custom_cursor_colors: true
 
@@ -42,8 +42,6 @@ colors:
   cursor:
     text: '0x000000'
     cursor: '0xb77ee0'
-
-background_opacity: 1.0
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
