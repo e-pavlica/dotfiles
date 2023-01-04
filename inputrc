@@ -1,2 +1,6 @@
 set editing-mode vi
 set keymap vi-command
+set colored-stats on
+set colored-completion-prefix on
+set completion-ignore-case on
+set completion-map-case on

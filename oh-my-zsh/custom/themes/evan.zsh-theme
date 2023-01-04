@@ -8,6 +8,7 @@ function _prompt_sym() {
   local RUBY=
   local JS=
   local RUST=
+  local PYTHON=
 
   local SYM="$SPARKLE"
 
@@ -17,6 +18,8 @@ function _prompt_sym() {
     local SYM="%F{yellow}$JS%f"
   elif [[ -e Cargo.toml ]]; then
     local SYM="%F{blue}$RUST%f"
+  elif [[ -e Pipfile ]] || [[ -e requirements.txt ]]; then
+    local SYM="%F{yellow}$PYTHON%f"
   else
     local KERNEL_RELEASE=$(uname -a)
     if [[ $KERNEL_RELEASE =~ arch ]]; then

@@ -130,6 +130,9 @@ alias screen='TERM=screen-256color screen'
 # Exit
 alias ex='exit'
 
+alias py='python3'
+alias serve='python3 -m http.server'
+
 man() {
 	env \
 		LESS_TERMCAP_mb=$'\e[01;31m' \
@@ -159,14 +162,14 @@ FOUND_RBENV=$+commands[rbenv]
 
 export PATH
 
-# Base16 Shell
+# # Base16 Shell
 BASE16_SHELL=$HOME/.shell/base16/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # tabtab source for packages
 # uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+# [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 # Use all the cores
-(( $+commands[nproc] )) && export MAKE="make --jobs $(nproc)"
-(( $+commands[gnproc] )) && export MAKE="make --jobs $(gnproc)"
+# (( $+commands[nproc] )) && export MAKE="make --jobs $(nproc)"
+# (( $+commands[gnproc] )) && export MAKE="make --jobs $(gnproc)"

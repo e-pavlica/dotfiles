@@ -29,7 +29,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore_global
-	ignorecase = false
+  ignorecase = false
 
 [apply]
   whitespace = nowarn
@@ -49,5 +49,5 @@
   required = true
 
 [commit]
-	gpgsign = true
-	template = ~/.gitmessage
+  gpgsign = true
+  template = ~/.gitmessage

@@ -9,3 +9,4 @@ Thumbs.db
 evan.rake
 /* nginx.conf.erb */
 start_passenger
+.secrets.local

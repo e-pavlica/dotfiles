@@ -17,6 +17,7 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set title         " Send filename to terminal
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -67,7 +68,7 @@ augroup vimrcEx
   autocmd FileType markdown,text setlocal spell
 
   " Disable hidden quotes in JSON
-  autocmd FileType json setlocal cole=0
+  autocmd FileType json setlocal cole=0 foldmethod=manual
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
@@ -87,7 +88,7 @@ augroup vimrcEx
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
 augroup END
 
-let g:indentLine_fileTypeExclude = ['markdown', 'json']
+" let g:indentLine_fileTypeExclude = ['markdown', 'json']
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_faster = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -98,6 +99,8 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
   highlight Comment cterm=italic gui=italic
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight NonText ctermbg=NONE guibg=NONE
 endif
 set t_ZH=[3m
 set t_ZR=[23m
@@ -237,6 +240,8 @@ vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
 vnoremap <Leader>!hr :s/:\([^ ]*\)\(\s*\)=>/\1:/<CR>
 " Convert Single Quotes to Double Quotes
 vnoremap <Leader>' :s/"/'/g<CR>
+" Convert Double Quotes to Single Quotes
+vnoremap <Leader>" :s/'/"/g<CR>
 " Add Space inside curly braces
 vnoremap <Leader>{} :s/{\(\S\)\(.*\)\(\S\)}/{ \1\2\3 }/<CR>
 " Add frozen_string_literal magic comment
@@ -260,5 +265,14 @@ nnoremap <Leader>fsl :call FrozenStringLiteralRB()<CR>
 " would delete two of the three 'aaa' lines
 vnoremap <Leader>dedup :s/^\(.*$\)\(\n\1\)\+/\1/<CR>
 
+" Insert Python PDB
+nnoremap <Leader>pdb :normal! oimport pdb; pdb.set_trace()
+
+" Insert Ruby binding.pry
+nnoremap <Leader>pry :normal! orequire('pry'); binding.pry
+
 " Create a Scratch buffer
 command! Scratch new | setlocal bt=nofile bh=wipe nobl noswapfile nu
+
+" Use .vimlocal files for project-specific config
+silent! so .vimlocal

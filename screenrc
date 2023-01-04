@@ -1,14 +1,14 @@
 # # GNU Screen Configuration
 encoding UTF-8
 
+# TODO: Linux support
+backtick 1 30 30 /usr/bin/env ruby -e "%x(uname -s) =~ /darwin/i && print('%s | %s | %s' % /.*'(.*)'.*\t(\d+%).*(\d{1,2}:\d{1,2})/m.match(%x(pmset -g batt))&.captures)"
 hardstatus alwayslastline
-hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
+# hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
+hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%1`%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
 # caption splitonly "%?%F%{.w.}%?%{= M} %= %n %{= B}%t %="
 caption splitonly "%{= dd}%?%F%{.m.}%?%= %{= M}%?%F%{..G}%?%n %{= B}%?%F%{..W}%?%t %="
 rendition so "= dG"
-
-# Battery state as percentage
-backtick 6 60 60 cat /sys/class/power_supply/BAT0/capacity
 
 # huge scrollback buffer
 defscrollback 5000
