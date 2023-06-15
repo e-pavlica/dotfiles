@@ -1,52 +1,53 @@
 " From https://klamp.works/2016/01/01/vim-splash.html
 fun! Start()
 
-	"Create a new unnamed buffer to display our splash screen inside of.
-	enew
+  "Create a new unnamed buffer to display our splash screen inside of.
+  enew
 
-	" Set some options for this buffer to make sure that does not act like a
-	" normal winodw.
-	setlocal
-				\ bufhidden=wipe
-				\ buftype=nofile
-				\ nobuflisted
-				\ nocursorcolumn
-				\ nocursorline
-				\ nolist
-				\ nonumber
-				\ noswapfile
-				\ norelativenumber
+  " Set some options for this buffer to make sure that does not act like a
+  " normal winodw.
+  setlocal
+        \ bufhidden=wipe
+        \ buftype=nofile
+        \ nobuflisted
+        \ nocursorcolumn
+        \ nocursorline
+        \ nolist
+        \ nonumber
+        \ noswapfile
+        \ norelativenumber
+        \ textwidth=0
 
-	" Our message goes here. Mine is simple.
-	"   call append('$', "
-	"   \")
-	syn match deltaFg '\.'
-	syn match deltaFg '[\.\`]:*[\.\'\`]'
-	syn match deltaBg '\*'
-	syn keyword deltaTxt EX ASTRIS SCIENTIA
-	hi deltaBg term=reverse ctermfg=8 ctermbg=3 guifg=#838085 guibg=#dc8a0e
-	hi deltaFg ctermfg=0 ctermbg=7 guifg=#2e2a31 guibg=#bcbabe
-	hi deltaTxt ctermfg=6 guifg=#149bda
+  " Our message goes here. Mine is simple.
+  "   call append('$', "
+  "   \")
+  syn match deltaFg '\.'
+  syn match deltaFg '[\.\`]:*[\.\'\`]'
+  syn match deltaBg '\*'
+  syn keyword deltaTxt EX ASTRIS SCIENTIA
+  hi deltaBg term=reverse ctermfg=8 ctermbg=3 guifg=#838085 guibg=#dc8a0e
+  hi deltaFg ctermfg=0 ctermbg=7 guifg=#2e2a31 guibg=#bcbabe
+  hi deltaTxt ctermfg=6 guifg=#149bda
   hi clear ExtraWhitespace
-	IndentLinesDisable
-	r ~/.vim/delta.txt
+  IndentLinesDisable
+  r ~/.vim/delta.txt
   let padding_columns = (&columns - 31) / 2
   let padding = repeat(' ', padding_columns)
   %s/^/\=padding/
-	echo 'Live Long, and Prosper'
+  echo 'Live Long, and Prosper'
 
-	" When we are done writing out message set the buffer to readonly.
-	setlocal
-				\ nomodifiable
-				\ nomodified
+  " When we are done writing out message set the buffer to readonly.
+  setlocal
+        \ nomodifiable
+        \ nomodified
 
   setlocal synmaxcol=0
 
-	" Just like with the default start page, when we switch to insert mode
-	" a new buffer should be opened which we can then later save.
-	nnoremap <buffer><silent> e :enew<CR>
-	nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
-	nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
+  " Just like with the default start page, when we switch to insert mode
+  " a new buffer should be opened which we can then later save.
+  nnoremap <buffer><silent> e :enew<CR>
+  nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
+  nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
 endfun
 
 fun! Clear()
@@ -59,8 +60,8 @@ fun! Clear()
   hi ExtraWhitespace ctermbg=9 guibg=#FF0000
 
   " Make it obvious where 80 characters is
-  set textwidth=80
-  set colorcolumn=+1
+  " set textwidth=80
+  " set colorcolumn=+1
 endfun
 
 " http://learnvimscriptthehardway.stevelosh.com/chapters/12.html

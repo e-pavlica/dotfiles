@@ -1,0 +1,39 @@
+# ls aliases
+alias ll='ls -alhF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# aliases for git commands #
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gb='git branch'
+alias gc='git checkout'
+alias gpu='git pull'
+alias gcl='git clone'
+
+# a quick way to get out of current directory
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+
+# Ruby aliases
+alias bi='bundle install'
+alias be='bundle exec'
+alias ber='bundle exec rake'
+alias bes='bundle exec rspec'
+
+alias screen='TERM=screen-256color screen'
+
+# Exit
+alias ex='exit'
+
+alias py='python3'
+alias serve='python3 -m http.server'
+
+# Use nvim instead of vim (when available)
+# [[ "$+commands[nvim]" -eq 1 ]] && alias vim=nvim

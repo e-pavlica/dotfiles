@@ -133,7 +133,7 @@ set synmaxcol=200
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
+" set wildmode=list:longest,list:full
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -220,11 +220,20 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 let g:ale_fixers = {
+      \ 'python':   ['ruff'],
       \ 'ruby':   ['rubocop'],
+      \ 'typescript': ['prettier'],
       \}
 let g:ale_python_auto_pipenv = 1
+let g:ale_linters = {
+  \   'python': ['pyright', 'ruff', 'jedils'],
+  \   'typescript': ['eslint', 'tsserver'],
+  \}
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+set omnifunc=ale#completion#OmniFunc
 
-" Don't do extra indenting of js and css in HTMKL files
+" Don't do extra indenting of js and css in HTML files
 let g:html_indent_script1 = 'zero'
 let g:html_indent_style1 = 'zero'
 
@@ -281,4 +290,4 @@ nnoremap <Leader>pry :normal! orequire('pry'); binding.pry
 command! Scratch new | setlocal bt=nofile bh=wipe nobl noswapfile nu
 
 " Use .vimlocal files for project-specific config
-silent! so .vimlocal
+silent! source .vimlocal

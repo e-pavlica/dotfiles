@@ -96,43 +96,6 @@ export EDITOR='vim'
 
 export FZF_DEFAULT_COMMAND="ag --nocolor -g '' -l"
 
-# ls aliases
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# aliases for git commands #
-alias ga='git add'
-alias gp='git push'
-alias gl='git log'
-alias gs='git status'
-alias gd='git diff'
-alias gm='git commit -m'
-alias gb='git branch'
-alias gc='git checkout'
-alias gpu='git pull'
-alias gcl='git clone'
-
-# a quick way to get out of current directory
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-
-# Ruby aliases
-alias bi='bundle install'
-alias be='bundle exec'
-alias ber='bundle exec rake'
-alias bes='bundle exec rspec'
-
-alias screen='TERM=screen-256color screen'
-
-# Exit
-alias ex='exit'
-
-alias py='python3'
-alias serve='python3 -m http.server'
-
 man() {
 	env \
 		LESS_TERMCAP_mb=$'\e[01;31m' \
@@ -147,6 +110,7 @@ man() {
 
 [[ -n "$SHELL" ]] || export SHELL=$(which zsh)
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+[[ -f "$HOME/.zshrc.aliases" ]] && source "$HOME/.zshrc.aliases"
 [[ -f "$HOME/.config/python/setup.py" ]] && export PYTHONSTARTUP="$HOME/.config/python/setup.py"
 
 # add the ~/.bin to PATH if it exists
@@ -159,17 +123,11 @@ done
 
 FOUND_RBENV=$+commands[rbenv]
 [[ $FOUND_RBENV -eq 1 ]] && eval "$(rbenv init -)"
+FOUND_KUBECTL=$+commands[kubectl]
+[[ $FOUND_KUBECTL -eq 1 ]] && source <(kubectl completion zsh)
 
 export PATH
 
 # # Base16 Shell
 BASE16_SHELL=$HOME/.shell/base16/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# tabtab source for packages
-# uninstall by removing these lines
-# [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-# Use all the cores
-# (( $+commands[nproc] )) && export MAKE="make --jobs $(nproc)"
-# (( $+commands[gnproc] )) && export MAKE="make --jobs $(gnproc)"
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && source "$BASE16_SHELL/profile_helper.sh"
