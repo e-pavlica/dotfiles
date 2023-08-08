@@ -1,9 +1,7 @@
 [user]
-  # name = Evan Pavlica & William Andrews
-  # name = Evan Pavlica & Patrick Collins
   name = Evan Pavlica
   email = evan@pavlica.us
-	signingkey = F461D89F2EFA35F2
+  signingkey = F461D89F2EFA35F2
 
 [credential]
   # helper = cache
@@ -30,6 +28,7 @@
   editor = vim
   excludesfile = ~/.gitignore_global
   ignorecase = false
+  whitespace = trailing-space,space-before-tab,
 
 [apply]
   whitespace = nowarn
@@ -44,11 +43,14 @@
   mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
   required = true
-	process = git-lfs filter-process
+  process = git-lfs filter-process
 
 [commit]
   gpgsign = true
   template = ~/.gitmessage
+
+[init]
+  defaultBranch = main

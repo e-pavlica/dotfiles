@@ -67,17 +67,21 @@ ZSH_DOTENV_PROMPT=false
 ZSH_DOTENV_FILE=.secrets.local
 FZF_BASE=/usr/local/opt/fzf
 
+# Disable permissions check on completions
+ZSH_DISABLE_COMPFIX=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
+plugins=(aws docker-compose dotenv gitfast gpg-agent npm nvm git-prompt )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~:%#"
+ZSH_THEME_TERM_TITLE_IDLE="%1~:%#"
 
 # load nearcolor module if GNU screen
 [[ $TERM != "screen-256color" ]] || zmodload zsh/nearcolor

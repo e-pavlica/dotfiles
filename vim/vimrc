@@ -249,6 +249,8 @@ hi link SpellBad WarningMsg
 
 " Use FZF for fuzzy search
 nmap <Leader>p :FZF<CR>
+" Use ALE to go to method definitions
+nmap <C-]> :ALEGoToDefinition<CR>
 " Convert Ruby 1.9 hash syntax to hashrocket style
 vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
 " Convert Hashrocket syntax to Ruby 1.9 syntax

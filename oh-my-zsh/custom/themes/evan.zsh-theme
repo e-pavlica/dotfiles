@@ -3,7 +3,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 function _prompt_sym() {
   local SPARKLE=✨
-  local DARWIN=
+  local DARWIN=
   local ARCH=
   local RUBY=
   local JS=
@@ -18,7 +18,7 @@ function _prompt_sym() {
     local SYM="%F{yellow}$JS%f"
   elif [[ -e Cargo.toml ]]; then
     local SYM="%F{blue}$RUST%f"
-  elif [[ -e Pipfile ]] || [[ -e requirements.txt ]]; then
+  elif [[ -e pyproject.toml ]] || [[ -e Pipfile ]] || [[ -e requirements.txt ]]; then
     local SYM="%F{yellow}$PYTHON%f"
   else
     local KERNEL_RELEASE=$(uname -a)
