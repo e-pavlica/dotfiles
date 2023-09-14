@@ -4,8 +4,8 @@
   signingkey = F461D89F2EFA35F2
 
 [credential]
-  # helper = cache
-  helper = store --file ~/.git-credential-store
+  # helper = store --file ~/.git-credential-store
+  helper = osxkeychain
 
 [color]
   ui = true
@@ -54,3 +54,6 @@
 
 [init]
   defaultBranch = main
+
+[url "https://github.com/e-pavlica"]
+  insteadOf = https://github.com/xicreative

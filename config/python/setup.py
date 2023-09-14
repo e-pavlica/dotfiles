@@ -1,7 +1,7 @@
 import os
 import sys
-sys.ps1 = '\033[1;33m  \033[92m❯\033[0m '
-sys.ps2 = '\033[1;91m… \033[0m '
+sys.ps1 = '\033[1;33m❯❯❯ \033[0m\033[h'
+sys.ps2 = '\033[1;91m... \033[0m\033[h'
 
 try:
     from rich import pretty, inspect, print
