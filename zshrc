@@ -75,7 +75,7 @@ ZSH_DISABLE_COMPFIX=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker-compose dotenv gitfast gpg-agent npm nvm git-prompt )
+plugins=(aws base16-shell docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,7 +131,3 @@ FOUND_KUBECTL=$+commands[kubectl]
 [[ $FOUND_KUBECTL -eq 1 ]] && source <(kubectl completion zsh)
 
 export PATH
-
-# # Base16 Shell
-BASE16_SHELL=$HOME/.shell/base16/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && source "$BASE16_SHELL/profile_helper.sh"

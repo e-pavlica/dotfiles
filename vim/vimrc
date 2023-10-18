@@ -89,6 +89,8 @@ augroup vimrcEx
 
   " Set JS to indent at 4 spaces
   " autocmd FileType javascript,js setlocal tabstop=4 shiftwidth=4
+  " Use ALE to go to method definitions
+  autocmd FileType typescript,javascript,python nmap <C-]> :ALEGoToDefinition<CR>
 augroup END
 
 " let g:indentLine_fileTypeExclude = ['markdown', 'json']
@@ -98,8 +100,16 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " Color scheme
 set t_Co=256
-if filereadable(expand("~/.vimrc_background"))
+
+if exists('$BASE16_THEME')
+    \ && (!exists('g:colors_name')
+    \ || g:colors_name != 'base16-$BASE16_THEME')
   let base16colorspace=256
+  colorscheme base16-$BASE16_THEME
+  let g:airline_theme = 'base16_' . substitute($BASE16_THEME, '-', '_', 'g')
+endif
+
+if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
   highlight Comment cterm=italic gui=italic
   highlight Normal ctermbg=NONE guibg=NONE
@@ -119,7 +129,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_left_sep      = ''
 let g:airline_left_alt_sep  = ''
 
-let g:airline_theme = 'base16'
+" let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
 " Numbers
@@ -243,14 +253,15 @@ let g:markdown_fenced_languages = ['python', 'json', 'ruby', 'javascript']
 " Pre-fill the GNU screen session for slime
 let g:slime_default_config = {"sessionname": $STY, "windowname": 6}
 
+" Tree-style directory browsing in NetRW
+" let g:netrw_liststyle=3
+
 " Base16 SpellBad is too hard to read; use WarningMsg instead
 hi clear SpellBad
 hi link SpellBad WarningMsg
 
 " Use FZF for fuzzy search
 nmap <Leader>p :FZF<CR>
-" Use ALE to go to method definitions
-nmap <C-]> :ALEGoToDefinition<CR>
 " Convert Ruby 1.9 hash syntax to hashrocket style
 vnoremap <Leader>hr :s/\(\s\+\)\(\w\+\):\s/\1:\2 => /g<CR>
 " Convert Hashrocket syntax to Ruby 1.9 syntax
@@ -290,6 +301,21 @@ nnoremap <Leader>pry :normal! orequire('pry'); binding.pry
 
 " Create a Scratch buffer
 command! Scratch new | setlocal bt=nofile bh=wipe nobl noswapfile nu
+
+" Preview markdown in the browser (requires `grip`)
+" source: https://www.reddit.com/r/vim/comments/8asgjj/topnotch_vim_markdown_live_previews_with_no/
+function! OpenMarkdownPreview() abort
+  if exists('s:markdown_job_id') && s:markdown_job_id > 0
+    call job_stop(s:markdown_job_id)
+    unlet s:markdown_job_id
+  endif
+  let s:markdown_job_id = job_start(
+    \ 'grip ' . shellescape(expand('%:p')) . " 0 2>&1 | awk '/Running/ { printf $4 }'",
+    \ { 'out_cb': 'OnGripStart', 'pty': 1 })
+  function! OnGripStart(_, output, __)
+    call system('open ' . a:output[0])
+  endfunction
+endfunction
 
 " Use .vimlocal files for project-specific config
 silent! source .vimlocal

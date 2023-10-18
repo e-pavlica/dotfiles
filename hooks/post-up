@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+mkdir -p $HOME/.oh-my-zsh/plugins/base16-shell
+ln -s $HOME/.config/base16-shell/base16-shell.plugin.zsh \
+  $HOME/.oh-my-zsh/plugins/base16-shell/base16-shell.plugin.zsh
