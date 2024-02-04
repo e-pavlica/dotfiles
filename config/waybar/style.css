@@ -1,0 +1,158 @@
+@import './colours.css';
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: Iosevka Nerd Font, monospace;
+  font-size: 16px;
+  min-height: 0;
+}
+
+window#waybar {
+  opacity: 0.8;
+  background-color: @base00;
+  border-bottom: 3px solid @base0E;
+  color: #ffffff;
+  color: @base07;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
+  color: @base07;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -3px @base05;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background-color: #64727D;
+  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -3px @base07;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+  background-color: @base08;
+}
+
+#mode {
+  background-color: #64727D;
+  background-color: @base02;
+  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid @base05;
+}
+
+label {
+  color: @base07;
+  padding: 0 16px 0 10px;
+  text-shadow: 1px 1px 2px @base01, -1px -1px 3px @base02;
+}
+
+label:focus {
+  background-color: #000000;
+  background-color: @base00;
+}
+
+#clock {
+  background-color: #64727D;
+  background-color: @base02;
+}
+
+#battery {
+  background-color: #ffffff;
+  background-color: @base05;
+}
+
+#battery.charging {
+  background-color: #26A65B;
+  background-color: @base0B;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f53c3c;
+  background-color: @base08;
+  color: #ffffff;
+  color: @base07;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#cpu {
+  background-color: #2ecc71;
+  background-color: @base0C;
+}
+
+#memory {
+  background-color: #9b59b6;
+  background-color: @base0E;
+}
+
+#backlight {
+  background-color: #90b1b1;
+  background-color: @base0D;
+}
+
+#custom-weather {
+  background-color: @base09;
+}
+
+#custom-power {
+  background-color: @base08;
+}
+
+#idle_inhibitor {
+  background-color: @base03;
+}
+
+#network {
+  background-color: #2980b9;
+  background-color: @base01;
+}
+
+#network.disconnected {
+  background-color: #f53c3c;
+  background-color: @base0F;
+}
+
+#pulseaudio {
+  background-color: #f1c40f;
+  background-color: @base0A;
+}
+
+#pulseaudio.muted {
+  background-color: #90b1b1;
+  background-color: @base02;
+}
+
+#tray {
+  background-color: #2980b9;
+}
