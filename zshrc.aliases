@@ -35,5 +35,6 @@ alias ex='exit'
 alias py='python3'
 alias serve='python3 -m http.server'
 
-# Use nvim instead of vim (when available)
-# [[ "$+commands[nvim]" -eq 1 ]] && alias vim=nvim
+alias k8s='kubectl'
+alias bat="bat --theme='base16-256'"
+alias cat='bat'

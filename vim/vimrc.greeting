@@ -25,10 +25,11 @@ fun! Start()
   syn match deltaFg '[\.\`]:*[\.\'\`]'
   syn match deltaBg '\*'
   syn keyword deltaTxt EX ASTRIS SCIENTIA
-  hi deltaBg term=reverse ctermfg=8 ctermbg=3 guifg=#838085 guibg=#dc8a0e
-  hi deltaFg ctermfg=0 ctermbg=7 guifg=#2e2a31 guibg=#bcbabe
-  hi deltaTxt ctermfg=6 guifg=#149bda
-  hi clear ExtraWhitespace
+  autocmd ColorScheme *
+    \ hi deltaBg term=reverse ctermfg=8 ctermbg=3 guifg=#838085 guibg=#dc8a0e |
+    \ hi deltaFg ctermfg=0 ctermbg=7 guifg=#2e2a31 guibg=#bcbabe |
+    \ hi deltaTxt ctermfg=6 guifg=#149bda |
+    \ hi clear ExtraWhitespace
   IndentLinesDisable
   r ~/.vim/delta.txt
   let padding_columns = (&columns - 31) / 2

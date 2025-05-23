@@ -10,3 +10,4 @@ evan.rake
 /* nginx.conf.erb */
 start_passenger
 .secrets.local
+biome.jsonc

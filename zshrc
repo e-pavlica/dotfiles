@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/epavlica/.zsh/completions:"* ]]; then export FPATH="/Users/epavlica/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -75,7 +77,7 @@ ZSH_DISABLE_COMPFIX=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws base16-shell docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
+plugins=(aws docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,16 +120,34 @@ man() {
 [[ -f "$HOME/.config/python/setup.py" ]] && export PYTHONSTARTUP="$HOME/.config/python/setup.py"
 
 # add the ~/.bin to PATH if it exists
-for DIR ( '' 'local/' 'cargo/' 'rbenv/')
+for DIR ( '' 'local/' 'cargo/' 'rbenv/' 'pyenv/' )
 do
   if [ -d ~/.${DIR}bin ]; then
     path+=~/.${DIR}bin
+  fi
+  if [ -d ~/.${DIR}sbin ]; then
+    path+=~/.${DIR}sbin
   fi
 done
 
 FOUND_RBENV=$+commands[rbenv]
 [[ $FOUND_RBENV -eq 1 ]] && eval "$(rbenv init -)"
+FOUND_PYENV=$+commands[pyenv]
+[[ $FOUND_PYENV -eq 1 ]] && eval "$(pyenv init -)"
+FOUND_STARSHIP=$+commands[starship]
+[[ $FOUND_STARSHIP -eq 1 ]] && eval "$(starship init zsh)"
 FOUND_KUBECTL=$+commands[kubectl]
 [[ $FOUND_KUBECTL -eq 1 ]] && source <(kubectl completion zsh)
 
 export PATH
+
+fpath+=~/.zfunc
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
+
+zstyle ':completion:*' menu yes select

@@ -1,14 +1,20 @@
 # # GNU Screen Configuration
 encoding UTF-8
 
+# shell nu
 # TODO: Linux support
 backtick 1 30 30 /usr/bin/env ruby -e "%x(uname -s) =~ /darwin/i && print('%s | %s | %s' % /.*'(.*)'.*\t(\d+%).*(\d{1,2}:\d{1,2})/m.match(%x(pmset -g batt))&.captures)"
 hardstatus alwayslastline
 # hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%H%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
 hardstatus string '%{= dW}%-w%{+b M}[%{W}%n %{Y}%t%{M}]%{-}%{= dW}%+w %=%{m}[%{W}%S%{m}]-[%{Y}%1`%{m}]-[%{b}%m.%d.%Y %{r}%c%{m}]'
+# hardstatus string '%{= dW}%-w%{mW}%n %{.k}%t%{bm}%{-}%{= dW}%+w %=%{kc}%{cw}%S%{cy}%{yk}%1`%{yb}%{bk}%Y-%m-%d%{br}%{rk}%c'
 # caption splitonly "%?%F%{.w.}%?%{= M} %= %n %{= B}%t %="
 caption splitonly "%{= dd}%?%F%{.m.}%?%= %{= M}%?%F%{..G}%?%n %{= B}%?%F%{..W}%?%t %="
 rendition so "= dG"
+
+# #powerline-style via https://github.com/bseibold/screen-powerline
+# caption always "%{kY} %n%f* %t %?%{YR}%{kR} %u %{Rb}%:%{Yb}%?%?%F%{.b}%:%{.w}%?%="
+# hardstatus alwayslastline "%{bk} %S %{kb} $LOGNAME %{bk} %H %?%{kb}%{kY} %-Lw%{Yk}%:%{Yb}%{Yk}%?%{Yk} %n%f* %t %{kY}%+Lw %-="
 
 # huge scrollback buffer
 defscrollback 5000
@@ -18,17 +24,18 @@ compacthist on
 startup_message off
 
 # 256 colors
-attrcolor b ".I"
-# termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# attrcolor b ".I"
+attrcolor d -d
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 truecolor on
-# defbce on
+defbce on
 altscreen on
 utf8 on
 # Terminal configuration
 term screen-256color
 
 # default windows
-screen 1 $SHELL
+screen 1
 select 0
 bind c screen 1 # window numbering starts at 1 not 0
 bind 0 select 10

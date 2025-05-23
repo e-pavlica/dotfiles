@@ -100,26 +100,21 @@ let g:indentLine_leadingSpaceChar = '·'
 
 " Color scheme
 set t_Co=256
+set termguicolors
+" colorscheme retrobox
 
-if exists('$BASE16_THEME')
-    \ && (!exists('g:colors_name')
-    \ || g:colors_name != 'base16-$BASE16_THEME')
-  let base16colorspace=256
-  colorscheme base16-$BASE16_THEME
-  let g:airline_theme = 'base16_' . substitute($BASE16_THEME, '-', '_', 'g')
-endif
-
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
-  highlight Comment cterm=italic gui=italic
-  highlight Normal ctermbg=NONE guibg=NONE
-  highlight NonText ctermbg=NONE guibg=NONE
+if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
+  let g:tinted_background_transparent = 1
+  let base16_colorspace=256
+  source $HOME/.config/tinted-theming/set_theme.vim
 endif
 set t_ZH=[3m
 set t_ZR=[23m
 
 " Airline Customization
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#right_sep     = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#left_sep      = ''
@@ -128,8 +123,6 @@ let g:airline_right_sep     = ''
 let g:airline_right_alt_sep = ''
 let g:airline_left_sep      = ''
 let g:airline_left_alt_sep  = ''
-
-" let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
 " Numbers
@@ -143,7 +136,10 @@ set synmaxcol=200
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-" set wildmode=list:longest,list:full
+set wildmenu
+set wildmode=longest:full,full
+set wildoptions=pum
+
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -230,22 +226,59 @@ let g:ale_sign_warning = ''
 let g:ale_sign_error = ''
 let g:ale_pattern_options = {'\.html$': {'ale_enabled': 0}}
 let g:ale_fixers = {
+      \ 'javascript': ['eslint', 'biome'],
       \ 'python':   ['ruff'],
       \ 'ruby':   ['rubocop'],
-      \ 'typescript': ['prettier'],
+      \ 'typescript': ['biome'],
+      \ 'typescriptreact': ['biome'],
       \}
-let g:ale_python_auto_pipenv = 1
+" let g:ale_python_auto_pipenv = 1
 let g:ale_linters = {
   \   'python': ['pyright', 'ruff', 'jedils'],
-  \   'typescript': ['eslint', 'tsserver'],
+  \   'typescript': ['biome', 'eslint', 'tsserver'],
+  \   'typescriptreact': ['biome', 'eslint', 'tsserver'],
   \}
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
 set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_symbols = {
+      \ 'text': '',
+      \ 'method': '',
+      \ 'function': '',
+      \ 'constructor': '',
+      \ 'field': '',
+      \ 'variable': '',
+      \ 'class': '',
+      \ 'interface': '',
+      \ 'module': '',
+      \ 'property': '',
+      \ 'unit': 'v',
+      \ 'value': 'v',
+      \ 'enum': 't',
+      \ 'keyword': 'v',
+      \ 'snippet': 'v',
+      \ 'color': 'v',
+      \ 'file': 'v',
+      \ 'reference': 'v',
+      \ 'folder': 'v',
+      \ 'enum_member': 'm',
+      \ 'constant': 'm',
+      \ 'struct': 't',
+      \ 'event': 'v',
+      \ 'operator': 'f',
+      \ 'type_parameter': 'p',
+      \ '<default>': 'v'
+      \ }
+let g:ale_cursor_detail = 1
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
 
 " Don't do extra indenting of js and css in HTML files
 let g:html_indent_script1 = 'zero'
 let g:html_indent_style1 = 'zero'
+
+" Enable extended Python syntax highlighting
+let g:python_highlight_all = 1
 
 " Allow inline sytnax highlighting in markdown
 let g:markdown_fenced_languages = ['python', 'json', 'ruby', 'javascript']

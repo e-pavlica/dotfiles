@@ -15,27 +15,27 @@
 # pink: #ffafc8
 
 format = """
-[█ ](fg:#ffafc8 bg:#ffffff)\
-[ ](fg:#ffffff bg:#74d7ee)\
-[ ](fg:#74d7ee bg:#732982)\
-[ ](fg:#732982 bg:#24408e)\
-[ ](fg:#24408e bg:#008026)\
-[ ](fg:#008026 bg:#ffed00)\
-[ ](fg:#ffed00 bg:#ff8c00)\
-[ ](fg:#ff8c00 bg:#e40303)\
-[ ](fg:#e40303 bg:#613915)\
-[ ](fg:#613915 bg:#000000)\
-[ ](fg:#000000 bg:#ffffff)\
+[█ ](fg:#ffafc8 bg:#ffffff)\
+[ ](fg:#ffffff bg:#74d7ee)\
+[ ](fg:#74d7ee bg:#732982)\
+[ ](fg:#732982 bg:#24408e)\
+[ ](fg:#24408e bg:#008026)\
+[ ](fg:#008026 bg:#ffed00)\
+[ ](fg:#ffed00 bg:#ff8c00)\
+[ ](fg:#ff8c00 bg:#e40303)\
+[ ](fg:#e40303 bg:#613915)\
+[ ](fg:#613915 bg:#000000)\
+[ ](fg:#000000 bg:#ffffff)\
 $username\
-[ ](fg:#ffffff bg:243)\
+[ ](fg:#ffffff bg:243)\
 $os\
 $hostname\
-[ ](fg:243 bg:245)\
+[ ](fg:243 bg:245)\
 $directory\
-[ ](fg:245 bg:247)\
+[ ](fg:245 bg:247)\
 $git_branch\
 $git_status\
-[ ](fg:247 bg:249)\
+[ ](fg:247 bg:249)\
 $c\
 $elixir\
 $elm\
@@ -50,10 +50,50 @@ $python\
 $ruby\
 $rust\
 $scala\
-[ ](fg:249 bg:none)\
+[ ](fg:249 bg:none)\
 $line_break\
 $character
 """
+# format = """
+# [█ ](fg:#ffafc8 bg:#ffffff)\
+# [ ](fg:#ffffff bg:#74d7ee)\
+# [ ](fg:#74d7ee bg:#732982)\
+# [ ](fg:#732982 bg:#24408e)\
+# [ ](fg:#24408e bg:#008026)\
+# [ ](fg:#008026 bg:#ffed00)\
+# [ ](fg:#ffed00 bg:#ff8c00)\
+# [ ](fg:#ff8c00 bg:#e40303)\
+# [ ](fg:#e40303 bg:#613915)\
+# [ ](fg:#613915 bg:#000000)\
+# [ ](fg:#000000 bg:#ffffff)\
+# $username\
+# [ ](fg:#ffffff bg:243)\
+# $os\
+# $hostname\
+# [ ](fg:243 bg:245)\
+# $directory\
+# [ ](fg:245 bg:247)\
+# $git_branch\
+# $git_status\
+# [ ](fg:247 bg:249)\
+# $c\
+# $elixir\
+# $elm\
+# $golang\
+# $gradle\
+# $haskell\
+# $java\
+# $julia\
+# $nodejs\
+# $nim\
+# $python\
+# $ruby\
+# $rust\
+# $scala\
+# [ ](fg:249 bg:none)\
+# $line_break\
+# $character
+# """
 
 # Disable the blank line at the start of the prompt
 add_newline = false
