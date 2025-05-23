@@ -1,0 +1,18 @@
+
+# This is the configuration file for Ghostty.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+font-family = VictorMono Nerd Font
+font-size = 18
+font-style = Medium
+keybind = super+f=toggle_fullscreen
+keybind = alt+right=unbind
+keybind = alt+left=unbind
+copy-on-select = clipboard
+theme = "tinted-theming"
+macos-icon = custom-style
