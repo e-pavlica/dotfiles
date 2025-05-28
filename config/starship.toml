@@ -13,69 +13,28 @@
 # light blue: #74d7ee
 # white: #ffffff
 # pink: #ffafc8
-
-format = """
-[█ ](fg:#ffafc8 bg:#ffffff)\
-[ ](fg:#ffffff bg:#74d7ee)\
-[ ](fg:#74d7ee bg:#732982)\
-[ ](fg:#732982 bg:#24408e)\
-[ ](fg:#24408e bg:#008026)\
-[ ](fg:#008026 bg:#ffed00)\
-[ ](fg:#ffed00 bg:#ff8c00)\
-[ ](fg:#ff8c00 bg:#e40303)\
-[ ](fg:#e40303 bg:#613915)\
-[ ](fg:#613915 bg:#000000)\
-[ ](fg:#000000 bg:#ffffff)\
-$username\
-[ ](fg:#ffffff bg:243)\
-$os\
-$hostname\
-[ ](fg:243 bg:245)\
-$directory\
-[ ](fg:245 bg:247)\
-$git_branch\
-$git_status\
-[ ](fg:247 bg:249)\
-$c\
-$elixir\
-$elm\
-$golang\
-$gradle\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$python\
-$ruby\
-$rust\
-$scala\
-[ ](fg:249 bg:none)\
-$line_break\
-$character
-"""
 # format = """
-# [█ ](fg:#ffafc8 bg:#ffffff)\
-# [ ](fg:#ffffff bg:#74d7ee)\
-# [ ](fg:#74d7ee bg:#732982)\
-# [ ](fg:#732982 bg:#24408e)\
-# [ ](fg:#24408e bg:#008026)\
-# [ ](fg:#008026 bg:#ffed00)\
-# [ ](fg:#ffed00 bg:#ff8c00)\
-# [ ](fg:#ff8c00 bg:#e40303)\
-# [ ](fg:#e40303 bg:#613915)\
-# [ ](fg:#613915 bg:#000000)\
-# [ ](fg:#000000 bg:#ffffff)\
+# [█ ](fg:#ffafc8 bg:#ffffff)\
+# [ ](fg:#ffffff bg:#74d7ee)\
+# [ ](fg:#74d7ee bg:#732982)\
+# [ ](fg:#732982 bg:#24408e)\
+# [ ](fg:#24408e bg:#008026)\
+# [ ](fg:#008026 bg:#ffed00)\
+# [ ](fg:#ffed00 bg:#ff8c00)\
+# [ ](fg:#ff8c00 bg:#e40303)\
+# [ ](fg:#e40303 bg:#613915)\
+# [ ](fg:#613915 bg:#000000)\
+# [ ](fg:#000000 bg:#ffffff)\
 # $username\
-# [ ](fg:#ffffff bg:243)\
+# [ ](fg:#ffffff bg:243)\
 # $os\
 # $hostname\
-# [ ](fg:243 bg:245)\
+# [ ](fg:243 bg:245)\
 # $directory\
-# [ ](fg:245 bg:247)\
+# [ ](fg:245 bg:247)\
 # $git_branch\
 # $git_status\
-# [ ](fg:247 bg:249)\
+# [ ](fg:247 bg:249)\
 # $c\
 # $elixir\
 # $elm\
@@ -90,10 +49,48 @@ $character
 # $ruby\
 # $rust\
 # $scala\
-# [ ](fg:249 bg:none)\
+# [ ](fg:249 bg:none)\
 # $line_break\
 # $character
 # """
+format = """
+[ ](fg:black bg:bright-purple)\
+[ ](fg:bright-purple bg:white)\
+[ ](fg:white bg:bright-blue)\
+[ ](fg:bright-blue bg:purple)\
+[ ](fg:purple bg:green)\
+[ ](fg:green bg:bright-yellow)\
+[ ](fg:bright-yellow bg:16)\
+[ ](fg:16 bg:red)\
+[ ](fg:red bg:white)\
+$username\
+[ ](fg:white bg:19)\
+$os\
+$hostname\
+[ ](fg:19 bg:20)\
+$directory\
+[ ](fg:20 bg:21)\
+$git_branch\
+$git_status\
+[ ](fg:21 bg:249)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$python\
+$ruby\
+$rust\
+$scala\
+[ ](fg:249 bg:none)\
+$line_break\
+$character
+"""
 
 # Disable the blank line at the start of the prompt
 add_newline = false
@@ -102,28 +99,28 @@ add_newline = false
 # and use the os module below
 [username]
 show_always = true
-style_user = "bold fg:#732982 bg:#ffffff"
-style_root = "bold fg:#e40303 bg:#ffffff"
+style_user = "bold fg:purple bg:white"
+style_root = "bold fg:bright-red bg:white"
 format = '[$user ]($style)'
 disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = 'fg:15 bg:243'
+style = 'fg:15 bg:19'
 format = '[ $symbol]($style)'
 disabled = false # Disabled by default
 
 [hostname]
 ssh_only = false
-style = 'fg:0 bg:243'
+style = 'fg:7 bg:19'
 format = '[ $ssh_symbol$hostname ]($style)'
 
 [directory]
-style = "fg:black bg:245"
+style = "fg:black bg:20"
 format = "[ $path ]($style)"
 truncation_length = 3
-truncation_symbol = "… /"
+truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
@@ -132,6 +129,7 @@ truncation_symbol = "… /"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
+"projects" = ""
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
 # will not be replaced, because "Documents" was already substituted before.
@@ -160,11 +158,11 @@ format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "fg:black bg:247"
+style = "fg:black bg:21"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:black bg:247"
+style = "fg:black bg:21"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
