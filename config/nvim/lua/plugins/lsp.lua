@@ -1,0 +1,104 @@
+return {}
+-- return {
+--   {
+--     'neovim/nvim-lspconfig',
+--     dependencies = {
+--       -- LSP installer (optional, but highly recommended)
+--       'mason-org/mason.nvim',
+--       'mason-org/mason-lspconfig.nvim',
+-- 
+--       -- Autocompletion integration with LSP
+--       'hrsh7th/nvim-cmp', -- Requires this for LSP completion
+--       'hrsh7th/cmp-nvim-lsp',
+-- 
+--       -- Other LSP-related tools (optional but common)
+--       'j-hui/fidget.nvim', -- LSP progress notifications
+--       'folke/trouble.nvim', -- Better diagnostic display
+--       -- 'nvim-tree/nvim-web-devicons', -- For icons in diagnostic/completion
+--     },
+--     event = { 'BufReadPost', 'BufNewFile' }, -- Lazy-load lspconfig when a buffer is read/created
+--     config = function()
+--       require('mason').setup()
+--       local lspconfig = require('lspconfig')
+--       local mason_lspconfig = require('mason-lspconfig')
+--       local cmp_nvim_lsp = require('cmp_nvim_lsp')
+--       local cmp = require('cmp')
+-- 
+--       cmp.setup({
+--         sources = cmp.config.sources({
+--           { name = 'nvim_lsp' },
+--           { name = 'buffer' },
+--         })
+--       })
+-- 
+--       -- Configure LSP capabilities to include nvim-cmp's capabilities
+--       -- This helps LSP servers provide more accurate completion suggestions
+--       local capabilities = vim.lsp.protocol.make_client_capabilities()
+--       capabilities = vim.tbl_deep_extend('force', capabilities, cmp_nvim_lsp.default_capabilities())
+-- 
+--       -- Set up Mason (LSP server installer)
+--       mason_lspconfig.setup({
+--         -- List of LSP servers to ensure installed by Mason
+--         ensure_installed = {
+--           'lua_ls', -- Lua Language Server (for Neovim config itself)
+--           'ts-standard', -- TypeScript/JavaScript
+--           'ruff',  -- Python
+--           'html',
+--           'cssls',
+--           'jsonls',
+--           'yamlls',
+--           'denols',
+--         },
+--         -- Define how installed servers are set up with lspconfig
+--         handlers = {
+--           -- Default handler for most servers: simply call their setup function
+--           function(server_name)
+--             lspconfig[server_name].setup({
+--               capabilities = capabilities,
+--               -- Add general settings for all LSP servers here
+--               -- Example: to disable formatting on save by default for all servers
+--               -- format_on_save = false,
+--             })
+--           end,
+--         },
+--       })
+-- 
+--       local on_attach = function(client, bufnr)
+--         -- Enable completion (if using nvim-cmp)
+--         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- 
+--         -- Mappings that should only be available when an LSP client is attached
+--         local opts = { noremap = true, silent = true }
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>vim.lsp.buf.declaration()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>FzfLua lsp_references<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>FzfLua lsp_implementations<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>vim.lsp.buf.hover()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>vim.lsp.buf.signature_help()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>vim.lsp.buf.rename()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>vim.lsp.buf.code_action()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>vim.lsp.buf.format()<CR>', opts)
+-- 
+--         -- Diagnostics mappings
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>vim.diagnostic.goto_prev()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>vim.diagnostic.goto_next()<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e', '<cmd>FzfLua diagnostics bufnr=0<CR>', opts)
+--         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>vim.diagnostic.setloclist()<CR>', opts)
+--       end
+-- 
+--       -- The `on_attach` function needs to be passed to each server's setup call
+--       -- For Mason's handlers, you can adjust the default handler:
+--       mason_lspconfig.setup({
+--         handlers = {
+--           function(server_name)
+--             lspconfig[server_name].setup({
+--               capabilities = capabilities,
+--               on_attach = on_attach, -- Pass the on_attach function here
+--             })
+--           end,
+--         },
+--       })
+-- 
+--     end,
+--   }
+-- }
