@@ -1,15 +1,14 @@
 -- ~/.config/nvim/lua/options.lua
 
 -- Core Vim/Neovim Settings
-vim.g.skip_defaults = true
-vim.g.hlsearch = false               -- Highlight search results
-vim.g.mapleader = ' '                -- Leader key, use vim.g for global variables
-vim.g.mouse = false                     -- Disable mouse support
+vim.opt_global.hlsearch = false
+vim.opt_global.mouse = ''
 vim.opt.autowrite = true             -- Automatically :write before running commands
 vim.opt.backspace = 'indent,eol,start' -- 2 in Vim means 'indent,eol,start'
 vim.opt.backup = false               -- nobackup
 vim.opt.cursorline = true            -- highlight the line the cursor is on
 vim.opt.encoding = 'utf-8'
+vim.opt.hidden = false
 vim.opt.history = 50
 vim.opt.incsearch = true             -- do incremental searching
 vim.opt.laststatus = 2               -- Always display the status line
@@ -66,4 +65,4 @@ vim.opt.termguicolors = true         -- Enable true color support if your termin
 -- Ripgrep (grepprg) - This can be set here, but LSP or other tools might override.
 -- Note: `vim.opt.grepprg` is an option, not a global variable.
 -- The value needs to be a string.
-vim.opt.grepprg = 'rg'
+vim.opt.grepprg = 'rg --vimgrep --smart-case --hidden --glob "!.git/*"'

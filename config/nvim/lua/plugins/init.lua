@@ -16,17 +16,6 @@ return {
     end
   },
   {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    ---@module 'ibl'
-    ---@type ibl.config
-    opts = {
-      indent = {
-        char = { '|', '¦', '┆', '┊' },
-      }
-    },
-  },
-  {
     'klen/nvim-config-local',
     config = function()
       require('config-local').setup {
@@ -43,11 +32,8 @@ return {
       }
     end
   },
-  -- 'HerringtonDarkholme/yats.vim',
-  -- 'pangloss/vim-javascript',
   'pbrisbin/vim-mkdir',
-  -- 'rust-lang/rust.vim',
-  'ryanoasis/vim-devicons',
+  'ntpeters/vim-better-whitespace',
   'tpope/vim-abolish',
   'tpope/vim-bundler',
   'tpope/vim-commentary',
@@ -58,6 +44,4 @@ return {
   'tpope/vim-rhubarb',
   'tpope/vim-surround',
   'tpope/vim-vinegar',
-  -- 'vim-python/python-syntax',
-  -- 'xolox/vim-misc',
 }

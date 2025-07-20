@@ -21,12 +21,11 @@ map('v', "<Leader>'", ":s/\"/'/g<CR>")
 -- Convert Double Quotes to Single Quotes
 map('v', "<Leader>\"", ":s/'/\"/g<CR>")
 
--- Neotest Mappings
-map('n', '<leader>tn', function() require('neotest').run.run() end, { desc = 'Run nearest test' })
-map('n', '<leader>tt', function() require('neotest').run.run(vim.fn.expand('%')) end, { desc = 'Run current file tests' })
-map('n', '<leader>ts', function() require('neotest').run.stop() end, { desc = 'Stop tests' })
-map('n', '<leader>tf', function() require('neotest').run.run({strategy = "dap", suite = "failed"}) end, { desc = 'Run failed tests' })
-map('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end, { desc = 'Open test output' })
-map('n', '<leader>tS', function() require('neotest').summary.toggle() end, { desc = 'Toggle test summary' })
-map('n', '<leader>td', function() require('neotest').run.run({strategy = "dap"}) end, { desc = 'Debug current file tests' })
---
+map('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end, { desc = 'Format current buffer' })
+map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = 'Go to definition' })
+map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = 'Go to declaration' })
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = 'Go to references' })
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = 'Go to implementation' })
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = 'Hover' })
+map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename' })
+map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = 'Code action' })
