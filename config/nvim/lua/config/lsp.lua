@@ -1,17 +1,3 @@
--- vim.lsp.enable('deno')
--- vim.lsp.enable('luals')
--- vim.lsp.enable('tsserver')
-
--- vim.lsp.config('ruff', {
---   init_options = {
---     settings = {
---       configurationPreference = 'filesystemFirst'
---     }
---   }
--- })
-
--- -- vim.lsp.enable('ruff') -- not enabled by default
-
 vim.diagnostic.config({
   virtual_text = true,
   signs = { text = {
@@ -30,6 +16,3 @@ vim.diagnostic.config({
     prefix = '',
   },
 })
-
-
-

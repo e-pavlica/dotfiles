@@ -29,8 +29,12 @@ vim.opt.textwidth = 100
 vim.opt.colorcolumn = '101'          -- +1 from textwidth 100
 
 -- Code Folding
-vim.opt.foldlevel = 25               -- Don't fold up initially
-vim.opt.foldmethod = 'syntax'
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = 'indent'
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldcolumn = '0'
+vim.opt.foldtext = ''
 
 -- Show Invisible Characters
 vim.opt.list = true
@@ -38,7 +42,7 @@ vim.opt.listchars = { tab = '▸ ', eol = '¬' } -- Note: Lua table for listchar
 
 -- Numbers
 vim.opt.number = true
-vim.opt.numberwidth = 5
+vim.opt.numberwidth = 3
 
 -- Syntax Highlighting Performance
 vim.opt.synmaxcol = 200              -- Disable syntax highlighting after 200 columns

@@ -17,9 +17,9 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-l>', '<C-w>l')
 
 -- Convert Single Quotes to Double Quotes
-map('v', "<Leader>'", ":s/\"/'/g<CR>")
+map('v', "<Leader>'", ":s/\"/'/g<CR>", { desc = 'Convert Double Quotes to Single Quotes' })
 -- Convert Double Quotes to Single Quotes
-map('v', "<Leader>\"", ":s/'/\"/g<CR>")
+map('v', "<Leader>\"", ":s/'/\"/g<CR>", { desc = 'Convert Single Quotes to Double Quotes' })
 
 map('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end, { desc = 'Format current buffer' })
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = 'Go to definition' })
