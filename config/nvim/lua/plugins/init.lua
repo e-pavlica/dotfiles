@@ -35,20 +35,19 @@ return {
   'pbrisbin/vim-mkdir',
   {
     'ntpeters/vim-better-whitespace',
-    init = function()
+    config = function()
       vim.g.better_whitespace_filetypes_blacklist = {
-        'dashboard'
+        'snacks_dashboard',
+        'dashboard',
       }
     end,
+    lazy = true,
+    event = 'VimEnter',
   },
   'tpope/vim-abolish',
-  'tpope/vim-bundler',
   'tpope/vim-commentary',
-  'tpope/vim-endwise',
   'tpope/vim-eunuch',
-  'tpope/vim-fugitive',
   'tpope/vim-repeat',
-  'tpope/vim-rhubarb',
   'tpope/vim-surround',
-  'tpope/vim-vinegar',
+  -- 'tpope/vim-vinegar',
 }

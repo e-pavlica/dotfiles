@@ -8,7 +8,7 @@ return {
           'bash', 'css', 'csv', 'diff', 'dockerfile', 'git_config',
           'git_rebase', 'gitcommit', 'gitignore', 'go', 'html', 'javascript',
           'json', 'jsonc', 'lua', 'make', 'markdown', 'markdown_inline',
-          'python', 'ruby', 'rust', 'scss', 'sql', 'toml',
+          'python', 'regex', 'ruby', 'rust', 'scss', 'sql', 'toml',
           'tsx', 'typescript', 'vim', 'yaml',
         },
         auto_install = true, -- Automatically install missing parsers
