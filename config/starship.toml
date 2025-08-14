@@ -64,15 +64,15 @@ format = """
 [ ](fg:16 bg:red)\
 [ ](fg:red bg:white)\
 $username\
-[ ](fg:white bg:19)\
+[ ](fg:white bg:18)\
 $os\
 $hostname\
-[ ](fg:19 bg:20)\
+[ ](fg:18 bg:19)\
 $directory\
-[ ](fg:20 bg:21)\
+[ ](fg:19 bg:20)\
 $git_branch\
 $git_status\
-[ ](fg:21 bg:249)\
+[ ](fg:20 bg:21)\
 $c\
 $elixir\
 $elm\
@@ -87,7 +87,7 @@ $python\
 $ruby\
 $rust\
 $scala\
-[ ](fg:249 bg:none)\
+[ ](fg:21 bg:none)\
 $line_break\
 $character
 """
@@ -107,17 +107,17 @@ disabled = false
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = 'fg:15 bg:19'
+style = 'fg:15 bg:18'
 format = '[ $symbol]($style)'
 disabled = false # Disabled by default
 
 [hostname]
 ssh_only = false
-style = 'fg:7 bg:19'
+style = 'fg:7 bg:18'
 format = '[ $ssh_symbol$hostname ]($style)'
 
 [directory]
-style = "fg:black bg:20"
+style = "fg:black bg:19"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -138,7 +138,7 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
@@ -148,75 +148,75 @@ format = '[ $symbol $context ]($style) $path'
 
 [elixir]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "fg:black bg:21"
+style = "fg:black bg:20"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:black bg:21"
+style = "fg:black bg:20"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [ruby]
 symbol = ""
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "fg:black bg:249"
+style = "fg:black bg:21"
 format = '[ $symbol ($version) ]($style)'
 
 [time]

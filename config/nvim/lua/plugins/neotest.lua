@@ -11,8 +11,10 @@ return {
     'nvim-neotest/neotest-jest',
     'nvim-neotest/neotest-python',
     'olimorris/neotest-rspec',
+    -- 'vim-test/vim-test',
+    -- 'nvim-neotest/neotest-vim-test',
     -- 'MarkEmmons/neotest-deno',   -- For Deno tests
-    { dir = '~/projects/neotest-deno' }, -- Local path for Deno tests
+    -- { dir = '~/projects/neotest-deno' }, -- Local path for Deno tests
 
     -- For key bindings
     'folke/which-key.nvim',
@@ -24,7 +26,8 @@ return {
         require('neotest-jest'),
         require('neotest-python'),
         require('neotest-rspec'),
-        require('neotest-deno'),
+        -- require('neotest-deno'),
+        -- require('neotest-vim-test')({ ignore_filetypes = { 'python', 'lua' } }),
       },
       -- General settings
       output = {

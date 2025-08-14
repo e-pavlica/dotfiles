@@ -38,3 +38,4 @@ alias serve='python3 -m http.server'
 alias k8s='kubectl'
 alias bat="bat --theme='base16-256'"
 alias cat='bat'
+alias vim='nvim'

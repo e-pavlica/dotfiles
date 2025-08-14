@@ -16,7 +16,9 @@ return {
           { section = "startup" },
         },
       },
-      explorer = { enabled = true },
+      explorer = {
+        enabled = true,
+      },
       git = { enabled = true },
       gitbrowse = { enabled = true },
       indent = {
@@ -27,16 +29,22 @@ return {
         enabled = true,
         timeout = 3000,
       },
-      picker = { enabled = true },
-      -- quickfile = { enabled = true },
+      picker = {
+        enabled = true,
+        sources = {
+          explorer = {
+            hidden = true,
+          }
+        }
+      },
       scratch = { enabled = true },
       scope = { enabled = true },
-      -- scroll = { enabled = true },
       statuscolumn = { enabled = true },
+      terminal = { enabled = true },
       words = { enabled = true },
       styles = {
         notification = {
-          -- wo = { wrap = true } -- Wrap notifications
+          wo = { wrap = true } -- Wrap notifications
         }
       }
     },
@@ -48,6 +56,7 @@ return {
       { '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
       { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History' },
       { '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
+      { '-', function() Snacks.explorer({ follow_file = true }) end, desc = 'File Explorer, in dir of current file' },
       -- find
       { '<leader>fb', function() Snacks.picker.buffers() end, desc = 'Buffers' },
       { '<leader>fc', function() Snacks.picker.files({ cwd = vim.fn.stdpath('config') }) end, desc = 'Find Config File' },
@@ -56,7 +65,6 @@ return {
       { '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
       { '<leader>fr', function() Snacks.picker.recent() end, desc = 'Recent' },
       -- git
-      { 'gB', function() Snacks.git.blame_line() end, desc = 'Git Blame Current Line' },
       { '<leader>gb', function() Snacks.picker.git_branches() end, desc = 'Git Branches' },
       { '<leader>gl', function() Snacks.picker.git_log() end, desc = 'Git Log' },
       { '<leader>gL', function() Snacks.picker.git_log_line() end, desc = 'Git Log Line' },
