@@ -9,7 +9,13 @@ return {
       dashboard = {
         enabled = true,
         sections = {
-          { section = "header" },
+          {
+            section = "terminal",
+            cmd = "delta-colorscript",
+            height = 18,
+            padding = 1,
+            indent = 16,
+          },
           { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
           { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },

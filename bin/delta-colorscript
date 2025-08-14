@@ -1,0 +1,38 @@
+#!/bin/sh
+
+setcolors()
+{
+  esc=""
+
+  yellowf="${esc}[33m"
+  bluef="${esc}[34m"
+  whitef="${esc}[37m"
+  whitefbright="${esc}[97m"
+  boldon="${esc}[1m"
+  italicson="${esc}[3m"
+
+  reset="${esc}[0m"
+}
+
+setcolors
+
+cat << EOF
+
+${boldon}               ${whitefbright}.${reset}
+${boldon}              ${whitefbright}.:.${reset}
+${boldon}             ${whitefbright}.:::.${reset}
+${boldon}            ${whitefbright}.:::::.${reset}
+${boldon}        ${yellowf}***${whitefbright}.:::::::.${yellowf}***${reset}
+${boldon}   ${yellowf}*******${whitefbright}.:::::::::.${yellowf}*******${reset}
+${boldon} ${yellowf}********${whitefbright}.:::::::::::.${yellowf}********${reset}
+${boldon}${yellowf}********${whitefbright}.:::::::::::::.${yellowf}********${reset}
+${boldon}${yellowf}*******${whitefbright}.::::::'${yellowf}***${whitefbright}\`::::.${yellowf}*******${reset}
+${boldon}${yellowf}******${whitefbright}.::::'${yellowf}*********${whitefbright}\`::.${yellowf}******${reset}
+${boldon} ${yellowf}****${whitefbright}.:::'${yellowf}*************${whitefbright}\`:.${yellowf}****${reset}
+${boldon}   ${yellowf}*${whitefbright}.::'${yellowf}*****************${whitefbright}\`.${yellowf}*${reset}
+${boldon}   ${whitefbright}.:'  ${yellowf}***************    ${whitefbright}.${reset}
+${boldon}  ${whitefbright}.${reset}
+
+${boldon}       ${italicson}${bluef}EX ASTRIS SCIENTIA${reset}
+
+EOF
