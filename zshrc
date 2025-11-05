@@ -1,10 +1,8 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/epavlica/.zsh/completions:"* ]]; then export FPATH="/Users/epavlica/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# [ -d "$HOME/.oh-my-zsh" ] && export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -141,11 +139,13 @@ FOUND_KUBECTL=$+commands[kubectl]
 
 export PATH
 
-fpath+=~/.zfunc
+[[ -d ~/.zsh/completions ]] && fpath+=~/.zsh/completions
+[[ -d ~/.zfunc ]] && fpath+=~/.zfunc
+
 autoload -Uz compinit
 
 for dump in ~/.zcompdump(N.mh+24); do
-    compinit
+  compinit
 done
 
 compinit -C

@@ -7,18 +7,22 @@
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
 
+app-notifications = no-clipboard-copy
+
 background-blur = true
-background-opacity = 0.8
+# background-opacity = 0.8
 
 copy-on-select = clipboard
 
 font-family = VictorMono Nerd Font
-font-size = 18
+font-size = 12
 font-style = Medium
 
 keybind = alt+left=unbind
 keybind = alt+right=unbind
 keybind = super+f=toggle_fullscreen
+
+link-url = true
 
 macos-icon = custom-style
 theme = "tinted-theming"

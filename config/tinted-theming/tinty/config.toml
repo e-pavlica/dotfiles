@@ -9,16 +9,10 @@ name = "tinted-delta"
 themes-dir = "configs"
 supported-systems = ["base16", "base24"]
 
-# [[items]]
-# path = "https://github.com/tinted-theming/tinted-terminal"
-# name = "tinted-terminal-alacritty"
-# themes-dir = "themes/alacritty"
-# hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/alacritty.toml"
-# supported-systems = ["base16", "base24"]
-
 [[items]]
 path = "https://github.com/tinted-theming/tinted-terminal"
 name = "tinted-terminal-ghostty"
+<<<<<<< Updated upstream
 themes-dir = "themes/ghostty-scripts"
 hook = '''
 sh %f -g 5 -s 16,12,10 > ~/.config/ghostty/themes/tinted-theming

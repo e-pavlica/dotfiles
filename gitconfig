@@ -50,9 +50,9 @@
   required = true
   process = git-lfs filter-process
 
-[commit]
-  gpgsign = true
-  template = ~/.gitmessage
+; [commit]
+;   gpgsign = true
+;   template = ~/.gitmessage
 
 [init]
   defaultBranch = main
@@ -61,10 +61,10 @@
   insteadOf = https://github.com/xicreative
 [credential "https://github.com"]
   helper = 
-  helper = !/Users/epavlica/.homebrew/bin/gh auth git-credential
+  helper = !gh auth git-credential
 [credential "https://gist.github.com"]
   helper = 
-  helper = !/Users/epavlica/.homebrew/bin/gh auth git-credential
+  helper = !gh auth git-credential
 [http]
   postBuffer = 157286400
 [interactive]
