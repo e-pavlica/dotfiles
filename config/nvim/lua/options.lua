@@ -6,6 +6,7 @@ vim.opt_global.mouse = ''
 vim.opt.autowrite = true             -- Automatically :write before running commands
 vim.opt.backspace = 'indent,eol,start' -- 2 in Vim means 'indent,eol,start'
 vim.opt.backup = false               -- nobackup
+vim.opt.clipboard = 'unnamedplus'    -- Use system clipboard
 vim.opt.cursorline = true            -- highlight the line the cursor is on
 vim.opt.encoding = 'utf-8'
 vim.opt.hidden = false

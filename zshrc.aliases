@@ -39,3 +39,5 @@ alias k8s='kubectl'
 alias bat="bat --theme='base16-256'"
 alias cat='bat'
 alias vim='nvim'
+
+alias docker-rmi-select='docker rmi -f $(docker images | fzf --accept-nth 3 --multi --print0 --header-lines=1)'

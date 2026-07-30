@@ -13,7 +13,6 @@
 
 require 'irb/completion'
 require 'rubygems'
-require 'pry'
 
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:SAVE_HISTORY] = 1000
@@ -30,10 +29,13 @@ IRB.conf[:PROMPT_MODE] = :EVAN
 alias ex exit
 
 # Use Pry everywhere
-begin
-  Pry.start
-rescue => e
-  puts e.message
-  puts e.backtrace
+if $0 != 'irb' and Gem.try_activate 'pry'
+  begin
+    require 'pry'
+    Pry.start
+    exit
+  rescue => e
+    puts e.message
+    puts e.backtrace
+  end
 end
-exit

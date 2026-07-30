@@ -53,41 +53,27 @@
 # $line_break\
 # $character
 # """
+
 format = """
-[ ](fg:black bg:bright-purple)\
-[ ](fg:bright-purple bg:white)\
-[ ](fg:white bg:bright-blue)\
-[ ](fg:bright-blue bg:purple)\
-[ ](fg:purple bg:green)\
-[ ](fg:green bg:bright-yellow)\
-[ ](fg:bright-yellow bg:16)\
-[ ](fg:16 bg:red)\
-[ ](fg:red bg:white)\
+[ ](fg:black bg:bright-purple)\
+[ ](fg:bright-purple bg:white)\
+[ ](fg:white bg:bright-blue)\
+[ ](fg:bright-blue bg:purple)\
+[ ](fg:purple bg:green)\
+[ ](fg:green bg:bright-yellow)\
+[ ](fg:bright-yellow bg:16)\
+[ ](fg:16 bg:red)\
+[ ](fg:red bg:white)\
 $username\
-[ ](fg:white bg:18)\
-$os\
+[ ](fg:white bg:18)\
 $hostname\
-[ ](fg:18 bg:19)\
+
+[ ](fg:18 bg:19)\
 $directory\
-[ ](fg:19 bg:20)\
+[ ](fg:19 bg:20)\
 $git_branch\
 $git_status\
-[ ](fg:20 bg:21)\
-$c\
-$elixir\
-$elm\
-$golang\
-$gradle\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$python\
-$ruby\
-$rust\
-$scala\
-[ ](fg:21 bg:none)\
+[ ](fg:20 bg:none)\
 $line_break\
 $character
 """
@@ -99,7 +85,7 @@ add_newline = false
 # and use the os module below
 [username]
 show_always = true
-style_user = "bold fg:purple bg:white"
+style_user = "bold fg:black bg:white"
 style_root = "bold fg:bright-red bg:white"
 format = '[$user ]($style)'
 disabled = false
