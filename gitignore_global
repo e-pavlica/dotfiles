@@ -11,3 +11,5 @@ evan.rake
 start_passenger
 .secrets.local
 biome.jsonc
+**/.DS_Store
+**/.nvim.lua

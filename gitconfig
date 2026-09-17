@@ -23,7 +23,7 @@
 [diff]
   renames = true
   confictstyle = patience
-  tool = vimdiff
+  tool = nvimdiff
 
 [core]
   editor = vim

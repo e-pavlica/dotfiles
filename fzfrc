@@ -1,0 +1,27 @@
+RG_COMMAND="rg --files --hidden"
+FIND_FILTER="-path ./.git -prune -o "
+FALLBACK_COMMAND="find . $FIND_FILTER -print"
+
+# Set default layout to reverse and enable border
+FZF_DEFAULT_COMMAND=$RG_COMMAND
+FZF_DEFAULT_COMMAND+="|| $FALLBACK_COMMAND"
+
+# Define a custom command for Ctrl-T (file search)
+FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Define a custom command for Alt-C (directory search)
+FZF_ALT_C_COMMAND="rg --files --null | xargs -0 dirname | sort -u"
+
+# Add a custom key binding to reload the input with a specific command
+# This example reloads the input with a list of all files in the parent directory
+# FZF_DEFAULT_OPTS+=" --bind 'f3:reload(find ../ -type f)'"
+
+# Enable preview window and use 'bat' for syntax highlighting
+FZF_DEFAULT_OPTS+=" --preview 'bat --style=numbers --color=always {}'"
+
+export FZF_DEFAULT_OPTS
+export FZF_DEFAULT_COMMAND
+export FZF_CTRL_T_COMMAND
+export FZF_ALT_C_COMMAND
+
+# vi: set ft=sh :
