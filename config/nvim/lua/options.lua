@@ -31,11 +31,15 @@ vim.opt.colorcolumn = '101'          -- +1 from textwidth 100
 
 -- Code Folding
 vim.opt.foldlevel = 99
-vim.opt.foldmethod = 'indent'
--- vim.opt.foldmethod = 'expr'
--- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldcolumn = '0'
-vim.opt.foldtext = ''
+-- vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- vim.opt.foldcolumn = '0'
+-- vim.opt.foldtext = ''
+-- Prevent everything from collapsing automatically when opening a file
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+
 
 -- Show Invisible Characters
 vim.opt.list = true

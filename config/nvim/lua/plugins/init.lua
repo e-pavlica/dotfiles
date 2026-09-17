@@ -20,6 +20,19 @@ return {
     end
   },
   {
+    'ntpeters/vim-better-whitespace',
+    config = function()
+      vim.g.better_whitespace_filetypes_blacklist = {
+        'snacks_dashboard',
+        'dashboard',
+      }
+    end,
+    lazy = true,
+    event = 'VimEnter',
+  },
+  'nvim-treesitter/nvim-treesitter',
+  'pbrisbin/vim-mkdir',
+  {
     'smoka7/hop.nvim',
     version = '*',
     opts = {
@@ -31,18 +44,6 @@ return {
       { '<Leader>k', '<cmd>HopLineStart<cr>', desc = 'Hop to line start' },
       { '<Leader>h', '<cmd>HopChar1<cr>', desc = 'Hop to character' },
     },
-  },
-  'pbrisbin/vim-mkdir',
-  {
-    'ntpeters/vim-better-whitespace',
-    config = function()
-      vim.g.better_whitespace_filetypes_blacklist = {
-        'snacks_dashboard',
-        'dashboard',
-      }
-    end,
-    lazy = true,
-    event = 'VimEnter',
   },
   'tpope/vim-abolish',
   'tpope/vim-commentary',
