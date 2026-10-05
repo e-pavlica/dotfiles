@@ -12,11 +12,12 @@ return {
         root_dir = vim.fs.root(0, { 'deno.json', 'deno.jsonc' }),
       }
       vim.lsp.enable({
-        'ruff',
-        'pyright',
-        'biome',
-        'ts_ls',
+        'biome', -- ts / js style & lint
         'denols',
+        'lua_ls',
+        'ruff',  -- python lint & style
+        'ts_ls', -- ts typechecking
+        'ty',    -- python typechecking
       })
     end,
   },

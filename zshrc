@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# [ -d "$HOME/.oh-my-zsh" ] && export ZSH="$HOME/.oh-my-zsh"
+[ -d "$HOME/.oh-my-zsh" ] && export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -75,7 +75,18 @@ ZSH_DISABLE_COMPFIX=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker-compose dotenv gitfast gpg-agent npm nvm git-prompt)
+plugins=(\
+  aws \
+  docker-compose \
+  dotenv \
+  git-prompt \
+  gitfast \
+  gpg-agent \
+  ollama \
+  npm \
+  nvm \
+  python \
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,12 +153,8 @@ export PATH
 [[ -d ~/.zsh/completions ]] && fpath+=~/.zsh/completions
 [[ -d ~/.zfunc ]] && fpath+=~/.zfunc
 
+# Final compinit after ALL plugin completions are loaded
 autoload -Uz compinit
-
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-
-compinit -C
+compinit
 
 zstyle ':completion:*' menu yes select

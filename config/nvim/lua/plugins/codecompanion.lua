@@ -43,37 +43,37 @@ return {
       },
       interactions = {
         chat = {
-          adapter = 'copilot',
+          adapter = _G.LocalConfig.codecompanion.adapter,
+          model = _G.LocalConfig.codecompanion.model,
         },
         inline = {
-          adapter = 'copilot',
+          adapter = _G.LocalConfig.codecompanion.adapter,
+          model = _G.LocalConfig.codecompanion.model,
         },
         cmd = {
-          adapter = 'copilot',
-        },
-        background = {
-          chat = {
-            adapter = 'copilot',
-            callbacks = {
-              ['on_ready'] = {
-                actions = {
-                  'interactions.background.builtin.chat_make_title',
-                },
-                -- Enable 'on_ready' callback which contains the title generation action
-                enabled = true,
-              },
-            },
-            opts = {
-              -- Enable background interactions generally
-              enabled = true,
-            },
-          },
+          adapter = _G.LocalConfig.codecompanion.adapter,
+          model = _G.LocalConfig.codecompanion.model,
         },
       },
     })
-    vim.keymap.set({ 'n', 'v' }, '<Leader>t', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true })
-    vim.keymap.set({ 'n', 'v' }, '<Leader>cc', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true })
-    vim.keymap.set('v', 'ga', '<cmd>CodeCompanionChat Add<cr>', { noremap = true, silent = true })
+    vim.keymap.set(
+      { 'n', 'v' },
+      '<Leader>t',
+      '<cmd>CodeCompanionActions<cr>',
+      { noremap = true, silent = true }
+    )
+    vim.keymap.set(
+      { 'n', 'v' },
+      '<Leader>cc',
+      '<cmd>CodeCompanionChat Toggle<cr>',
+      { noremap = true, silent = true }
+    )
+    vim.keymap.set(
+      'v',
+      'ga',
+      '<cmd>CodeCompanionChat Add<cr>',
+      { noremap = true, silent = true }
+    )
 
     -- Expand 'cc' into 'CodeCompanion' in the command line
     vim.cmd([[cab cc CodeCompanion]])

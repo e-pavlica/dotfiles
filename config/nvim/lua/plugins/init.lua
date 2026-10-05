@@ -33,16 +33,33 @@ return {
   'nvim-treesitter/nvim-treesitter',
   'pbrisbin/vim-mkdir',
   {
-    'smoka7/hop.nvim',
-    version = '*',
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
     opts = {
-      keys = 'etovxqpdygfblzhckisuran'
+      {
+        modes = {
+          char = {
+            jump_labels = true
+          }
+        }
+      }
     },
     keys = {
-      { '<Leader>j', '<cmd>HopWord<cr>', desc = 'Hop to word' },
-      { '<Leader>l', '<cmd>HopLine<cr>', desc = 'Hop to line' },
-      { '<Leader>k', '<cmd>HopLineStart<cr>', desc = 'Hop to line start' },
-      { '<Leader>h', '<cmd>HopChar1<cr>', desc = 'Hop to character' },
+      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end,       desc = 'Flash' },
+      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
+      {
+        '<Leader>l',
+        function()
+          require("flash").jump({
+            search = { mode = "search", max_length = 0 },
+            label = { after = { 0, 0 } },
+            pattern = "^"
+          })
+        end,
+        desc = 'Jump to line'
+      },
+      { '<c-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' },
     },
   },
   'tpope/vim-abolish',
