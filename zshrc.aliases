@@ -1,7 +1,15 @@
-# ls aliases
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
+# ls / lsd aliases
+if (( $+commands[lsd] )); then
+  alias ls='lsd'
+  alias ll='lsd -alhF'
+  alias la='lsd -A'
+  alias l='lsd -F'
+  alias lt='lsd --tree'
+else
+  alias ll='ls -alhF'
+  alias la='ls -A'
+  alias l='ls -CF'
+fi
 
 # aliases for git commands #
 alias ga='git add'
